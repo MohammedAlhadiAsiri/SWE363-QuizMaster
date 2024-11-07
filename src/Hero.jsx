@@ -5,7 +5,7 @@ function Hero(){
 
     return(
         <div className="container">
-            <div className="text-container">
+            <div>
                 <h1>Test Your Knowledge</h1>
                 <h1>-Anytime, Anywhere-</h1>
                 <GetStartedButton/>
@@ -13,6 +13,7 @@ function Hero(){
             <div className="picture-container">
                 <img src="src\assets\smiling-happy-indian-student-with-backpack-pointing-his-finger-wall 1.png" className="picture"></img>
                 <img src="src\assets\picture-background.svg" className="picture-background"></img>
+
             </div>
             
             
