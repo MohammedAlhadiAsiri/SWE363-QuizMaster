@@ -1,22 +1,20 @@
+import React, { useState } from "react";
 import "./hero.css";
-import GetStartedButton from "./getStartedButton";
-
-function Hero(){
-
+import GetStartedButton from "./GetStartedButton.jsx";
+function Hero({openModal}){
+    
     return(
         <div className="container">
             <div>
                 <h1>Test Your Knowledge</h1>
                 <h1>-Anytime, Anywhere-</h1>
-                <GetStartedButton/>
+                <GetStartedButton onClick={openModal}/>
             </div>
             <div className="picture-container">
                 <img src="src\assets\smiling-happy-indian-student-with-backpack-pointing-his-finger-wall 1.png" className="picture"></img>
                 <img src="src\assets\picture-background.svg" className="picture-background"></img>
 
             </div>
-            
-            
        </div>
     )
 

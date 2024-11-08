@@ -1,8 +1,8 @@
 import "./getStartedButton.css";
 
-function GetStartedButton(){
+function GetStartedButton({onClick}){
     return(
-        <button className="getStartedButton">Get Started</button>
+        <button onClick={onClick} className="getStartedButton">Get Started</button>
     );
 
 }

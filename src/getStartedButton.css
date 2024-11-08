@@ -1,21 +1,4 @@
 .getStartedButton{
-    /*width: 164px;
-    height: 72px;
-    flex-shrink: 0;
-    border-radius: 33px;
-    background: #2BAFFC;
-    color: #F4F9FD;
-    text-align: center;
-    font-family: Outfit;
-    font-size: 18px;
-    font-style: normal;
-    font-weight: 600;
-    line-height: normal;
-    border-color: #2BAFFC;
-    position: relative;
-    top:400px;
-    left:430px;*/
-
     width: 164px;
     height: 72px;
     border-radius: 33px;
@@ -24,7 +7,11 @@
     font-family: Outfit, sans-serif;
     font-size: 18px;
     font-weight: 600;
-    margin-top: 20px; /* Space between button and other elements */
+    margin-top: 20px; 
     border: none;
     cursor: pointer;
+}
+
+.getStartedButton:hover {
+    background: #1b8bd9;
 }
