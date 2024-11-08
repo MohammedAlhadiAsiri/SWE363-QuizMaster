@@ -1,7 +1,7 @@
 import React from 'react';
 import './SignUpModal.css';
 
-function SignUpModal({onClose}) {
+function SignUpModal({onClose, openModal}) {
     
     return (
         <div className="modal-overlay" onClick={onClose}>
@@ -11,31 +11,31 @@ function SignUpModal({onClose}) {
                     <div className="form-row">
                         <div className="form-group">
                             <label></label>
-                            <input type="text" placeholder="First Name" required />
+                            <input type="SignUpText" placeholder="First Name" required />
                         </div>
                         <div className="form-group">
                             <label></label>
-                            <input type="text" placeholder="Last Name" required />
-                        </div>
-                    </div>
-                    <div className="form-row">
-                        <div className="form-group">
-                            <label></label>
-                            <input type="email" placeholder="Email" required/>
-                        </div>
-                        <div className="form-group">
-                            <label></label>
-                            <input type="email" placeholder="Confirm Email" required />
+                            <input type="SignUpText" placeholder="Last Name" required />
                         </div>
                     </div>
                     <div className="form-row">
                         <div className="form-group">
                             <label></label>
-                            <input type="password" placeholder="Password" required />
+                            <input type="SignUpEmail" placeholder="Email" required/>
                         </div>
                         <div className="form-group">
                             <label></label>
-                            <input type="password" placeholder="Confirm Password" required />
+                            <input type="SignUpEmail" placeholder="Confirm Email" required />
+                        </div>
+                    </div>
+                    <div className="form-row">
+                        <div className="form-group">
+                            <label></label>
+                            <input type="SignUpPassword" placeholder="Password" required />
+                        </div>
+                        <div className="form-group">
+                            <label></label>
+                            <input type="SignUpPassword" placeholder="Confirm Password" required />
                         </div>
                     </div>
                     <div className="form-group role-group">
@@ -45,8 +45,8 @@ function SignUpModal({onClose}) {
                             <label><input type="radio" name="role" value="quizMaker" /> Quiz Maker</label>
                         </div>
                     </div>
-                    <button type="submit" className="sign-up-button">Sign up</button>
-                    <p className="sign-in-text">Already have an account? <a href="#signin">Sign in</a></p>
+                    <button type="submit" className="sign-up-button" >Sign up</button>
+                    <p className="sign-in-text">Already have an account? <a href="#signin" onClick={openModal}>Sign in</a></p>
                 </form>
             </div>
         </div>

@@ -3,27 +3,43 @@ import Navbar from "./Navbar.jsx";
 import SignUpModal from "./SignUpModal.jsx";
 import Hero from "./Hero.jsx";
 import React, { useState } from "react";
+import SignInModal from "./SignInModal.jsx";
+import ContactUs from "./ContactUs.jsx";
 
 function App() {
 
-  const [showModal, setShowModal] = useState(false);
+  const [showSignUpModal, setShowSignUpModal] = useState(false);
+  const [showSignInModal, setShowSignInModal] = useState(false);
 
-  const openModal = () => {
-    console.log("Opening modal..."); 
-    setShowModal(true);
+  const openSignUpModal = () => {
+    setShowSignUpModal(true);
+    setShowSignInModal(false);
 };
 
-const closeModal = () => {
-    setShowModal(false);
+const closeSignUpModal = () => {
+    setShowSignUpModal(false);
+};
+
+const openSignInModal = () => {
+  setShowSignInModal(true);
+  setShowSignUpModal(false);
+};
+
+const closeSignInModal = () => {
+  setShowSignInModal(false);
 };
 
   return(
     <div>
-    <Navbar openModal={openModal} />
-    <div className={`main-content ${showModal ? "blur" : ""}`}>
-        <Hero openModal={openModal} />
+    <ContactUs/>
+    <Navbar openModal={openSignUpModal} />
+    <div className={`main-content ${showSignUpModal ? "blur" : ""}`}>
+        <Hero openModal={openSignUpModal} />
     </div>
-    {showModal && <SignUpModal onClose={closeModal} />}
+    {showSignUpModal && <SignUpModal onClose={closeSignUpModal} openModal={openSignInModal} />}
+    {showSignInModal && <SignInModal onClose={closeSignInModal} openModal={openSignUpModal} />}
+    
+
 </div>
   );
 }
