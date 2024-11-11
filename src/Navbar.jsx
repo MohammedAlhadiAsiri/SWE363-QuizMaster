@@ -1,5 +1,6 @@
 import "./Navbar.css";
 import React, { useState } from "react";
+import { useNavigate } from 'react-router-dom';
 
 function Navbar(){
 
@@ -8,10 +9,11 @@ function Navbar(){
     const toggleMenu = () => {
         setIsOpen(!isOpen);
     };
-
+    const navigate = useNavigate();
+    function handleClick(){navigate('/');}
     return(
         <header className="header">
-            <div className="logo">QuizMaster</div>
+            <div className="logo" onClick={handleClick}>QuizMaster</div>
             <nav className={`navbar ${isOpen ? "open" : ""}`}>
                 <a href="#about">About</a>
                 <a href="#contact">Contact Us</a>
