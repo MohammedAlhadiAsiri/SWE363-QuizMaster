@@ -4,6 +4,7 @@ import ContactUsModal from "./ContactUsModal";
 import GetStartedButton from "./GetStartedButton";
 import SignInModal from "./SignInModal";
 import SignUpModal from "./SignUpModal";
+import { useNavigate } from 'react-router-dom';
 
 function Navbar(){
 
@@ -42,9 +43,11 @@ function Navbar(){
       setShowSignInModal(false);
     };
 
+    const navigate = useNavigate();
+    function handleClick(){navigate('/');}
     return(
         <header className="header">
-            <div className="logo">QuizMaster</div>
+            <div className="logo" onClick={handleClick}>QuizMaster</div>
             <nav className={`navbar ${isOpen ? "open" : ""}`}>
                 <button className="navbar-toggle" onClick={toggleMenu}>
                     ☰

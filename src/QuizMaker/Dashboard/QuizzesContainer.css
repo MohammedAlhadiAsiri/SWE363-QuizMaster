@@ -1,0 +1,53 @@
+.quizzesContainer {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 80%;
+    margin: 0 auto;
+    text-align: center;
+    height: 350px;
+}
+
+.navBar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 3px solid #4da6ff;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+.quizzes {
+    font-size: 1.5em;
+    color: #2BAFFC;
+    font-weight: bold;
+    font-family: Outfit, sans-serif;
+
+}
+
+.searchFilter{
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 200px;
+    font-size: 1em;
+    margin-right: 18px;
+    margin-left: auto; 
+}
+
+.createButton {
+    font-family: Outfit, sans-serif;
+    background-color: #2BAFFC;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.createButton:hover {
+    background-color: #3399ff;
+}

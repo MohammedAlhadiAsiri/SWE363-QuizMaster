@@ -1,0 +1,58 @@
+.card {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 40%;
+    margin: 0 auto;
+    text-align: center;
+    height: 350px;
+    margin-bottom: 30px;
+}
+
+ .question {
+    background: none;
+    border: none;
+    width: 400px ;
+    border-bottom: 2px solid #ccc; 
+    padding: 8px;
+    color: #4da6ff;
+    font-family: Outfit, sans-serif;
+    text-align: center;
+    font-size: 22px ;
+    font-weight: bold;
+    outline: none; 
+    margin-bottom: 120px;
+    margin-top: 40px;
+}
+
+.question::placeholder {
+    color: #727272; /* Color for the placeholder text */
+    opacity: 0.7; /* Adjusts placeholder opacity */
+}
+
+.question:focus {
+    border-color: #4a91e200; /* Optional: Change underline color on focus */
+}
+.answers {
+    
+    border: none;
+    border-bottom: 2px solid #ccc; /* Optional: Adds an underline */
+    padding: 8px;
+    font-family: Outfit, sans-serif;
+    font-size: 12px;
+    outline: none; /* Removes the default focus outline */
+}
+
+.answers::placeholder {
+    color: #727272; /* Color for the placeholder text */
+    opacity: 0.7; /* Adjusts placeholder opacity */
+}
+
+.answers:focus {
+    border-color: #4a91e200; /* Optional: Change underline color on focus */
+}
+
+.radio{
+    margin: 16px;
+}
