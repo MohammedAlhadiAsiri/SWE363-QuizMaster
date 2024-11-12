@@ -1,15 +1,16 @@
 import "./App.css"
 import Navbar from "./Navbar.jsx";
+import SignInModal from "./SignInModal.jsx";
 import SignUpModal from "./SignUpModal.jsx";
 import Hero from "./Hero.jsx";
 import React, { useState } from "react";
-import SignInModal from "./SignInModal.jsx";
-import ContactUs from "./ContactUs.jsx";
+
 
 function App() {
 
   const [showSignUpModal, setShowSignUpModal] = useState(false);
   const [showSignInModal, setShowSignInModal] = useState(false);
+
 
   const openSignUpModal = () => {
     setShowSignUpModal(true);
@@ -29,9 +30,9 @@ const closeSignInModal = () => {
   setShowSignInModal(false);
 };
 
+
   return(
     <div>
-    <ContactUs/>
     <Navbar openModal={openSignUpModal} />
     <div className={`main-content ${showSignUpModal ? "blur" : ""}`}>
         <Hero openModal={openSignUpModal} />

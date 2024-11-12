@@ -62,8 +62,7 @@
     width: 100%;
 }
 
-input[type="SignInEmail"],
-input[type="SignInPassword"] {
+.signInInput {
     padding: 10px;
     font-size: 14px;
     border: none;
@@ -71,7 +70,7 @@ input[type="SignInPassword"] {
     outline: none;
     background: #ffffff;
     font-family: outfit;
-    max-width: 320px;
+    width:420px;
 }
 
 .sign-in-button {
