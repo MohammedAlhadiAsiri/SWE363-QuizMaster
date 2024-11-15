@@ -9,15 +9,15 @@ function SignInModal({onClose, openModal}) {
                 <form className="sign-in-form">
                     <div className="form-group">
                         <label></label>
-                        <input type="SignInEmail" placeholder="Email" required />
+                        <input type="email" className='signInInput' placeholder="Email" required />
                     </div>
                     <div className="form-group">
                         <label></label>
-                        <input type="SignInPassword" placeholder="Password" required />
+                        <input type="password" className='signInInput' placeholder="Password" required />
                     </div>
                     <button type="submit" className="sign-in-button" >Login</button>
                     <p className="sign-up-text">
-                        You Don’t have an account? <a href="#signup" onClick={openModal}>Sign up</a>
+                        You Don't have an account? <a href="#signup" onClick={openModal}>Sign up</a>
                     </p>
                 </form>
             </div>

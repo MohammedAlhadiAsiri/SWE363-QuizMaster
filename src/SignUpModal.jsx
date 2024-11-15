@@ -11,31 +11,31 @@ function SignUpModal({onClose, openModal}) {
                     <div className="form-row">
                         <div className="form-group">
                             <label></label>
-                            <input type="SignUpText" placeholder="First Name" required />
+                            <input type="text" className='signUpInput' placeholder="First Name" required />
                         </div>
                         <div className="form-group">
                             <label></label>
-                            <input type="SignUpText" placeholder="Last Name" required />
-                        </div>
-                    </div>
-                    <div className="form-row">
-                        <div className="form-group">
-                            <label></label>
-                            <input type="SignUpEmail" placeholder="Email" required/>
-                        </div>
-                        <div className="form-group">
-                            <label></label>
-                            <input type="SignUpEmail" placeholder="Confirm Email" required />
+                            <input type="text" className='signUpInput' placeholder="Last Name" required />
                         </div>
                     </div>
                     <div className="form-row">
                         <div className="form-group">
                             <label></label>
-                            <input type="SignUpPassword" placeholder="Password" required />
+                            <input type="email" className='signUpInput' placeholder="Email" required/>
                         </div>
                         <div className="form-group">
                             <label></label>
-                            <input type="SignUpPassword" placeholder="Confirm Password" required />
+                            <input type="email" className='signUpInput' placeholder="Confirm Email" required />
+                        </div>
+                    </div>
+                    <div className="form-row">
+                        <div className="form-group">
+                            <label></label>
+                            <input type="password" className='signUpInput' placeholder="Password" required />
+                        </div>
+                        <div className="form-group">
+                            <label></label>
+                            <input type="password" className='signUpInput' placeholder="Confirm Password" required />
                         </div>
                     </div>
                     <div className="form-group role-group">

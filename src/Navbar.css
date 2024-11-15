@@ -19,15 +19,14 @@
     flex-shrink: 0;
     color: #2BAFFC;
     font-family: outfit;
-    font-size: 24px;
+    font-size: 22px;
     font-style: normal;
     font-weight: 900;
     line-height: normal;
     position: relative;
     top:0px;
     left:143px;
-    cursor: pointer;
-
+    cursor:default;
 }
 
 .navbar a{
@@ -50,6 +49,7 @@
 .navbar a:hover{
 
     text-decoration: underline;
+    cursor: pointer;
 }
 
 @media (max-width: 768px) {
@@ -103,9 +103,60 @@
         width: 100%;
     }
 
-    .navbar-open {
-        display: block;
-    }
+/* Style for the sidebar menu when it's open */
+.navbar.open {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 300px; /* Adjust width as needed */
+    height: 100%;
+    background-color: #E8F5FF; /* Light blue background color */
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.25); /* Slight shadow for depth */
+    display: flex;
+    flex-direction: column;
+    align-items:center;
+    padding-left: 20px;
+    z-index: 1000; /* Ensure it appears above other elements */
+    transition: transform 5ms ease; /* Smooth opening transition */
+    transform: translateX(0); /* Visible when open */
+}
+
+
+.menu-logo{
+
+    width: 118px;
+    height: 19px;
+    flex-shrink: 0;
+    color: #2BAFFC;
+    font-family: outfit;
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 900;
+    line-height: normal;
+    position: relative;
+    top:0px;
+    cursor:default;
+
+}
+/* Hide the navbar off-screen by default */
+.navbar {
+    transform: translateX(100%); /* Hidden position */
+    transition: transform 0.3s ease;
+}
+
+/* Menu item styles */
+.navbar.open a {
+    margin: 15px 0;
+    font-size: 20px;
+    color: #2BAFFC; /* Text color to match theme */
+    text-decoration: none;
+}
+
+/* Optional: Hover effect for menu items */
+.navbar.open a:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
 
     .navbar a {
         margin: 10px 0;
