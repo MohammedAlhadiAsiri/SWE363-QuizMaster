@@ -22,7 +22,7 @@
 }
 .sidebar{
     display: grid;
-    gap: 500px;
+    gap: 550px;
     background-color: #ccc;
     border-radius: 8px;
 

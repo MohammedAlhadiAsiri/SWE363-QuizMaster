@@ -1,4 +1,6 @@
 .card {
+    display: grid;
+    justify-content: center;
     background-color: white;
     padding: 20px;
     border-radius: 10px;
@@ -8,6 +10,7 @@
     text-align: center;
     height: 350px;
     margin-bottom: 30px;
+    overflow: auto;
 }
 
  .question {
@@ -35,7 +38,6 @@
     border-color: #4a91e200; /* Optional: Change underline color on focus */
 }
 .answers {
-    
     border: none;
     border-bottom: 2px solid #ccc; /* Optional: Adds an underline */
     padding: 8px;
@@ -55,4 +57,9 @@
 
 .radio{
     margin: 16px;
+}
+
+.answersContainer{
+    display:inline-block;
+    /* justify-content: center; */
 }

@@ -1,0 +1,17 @@
+.questionsList{
+    
+}
+.questionListElement{
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    font-family: Outfit, sans-serif;
+
+}
+.questionListLabel{
+    color: #2BAFFC;
+
+}
+.removeQuestionIcon{
+    cursor: pointer;
+}
