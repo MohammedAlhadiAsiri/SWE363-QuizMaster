@@ -1,0 +1,58 @@
+.quizPublishedModal-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.quizPublishedModal-container {
+    background-color: #1e90ff;
+    color: white;
+    width: 650px;
+    height: 325px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    position: relative;
+    text-align: center;
+}
+.quizPublishedText{
+    font-family: Outfit, sans-serif;
+    font-size: 40px;
+}
+.closeModalButton {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.goBackButton {
+    background-color: #ffffff; 
+    color: #2BAFFC;
+    border: none;
+    border-radius: 10px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 30%;
+    height: 50px;
+    margin-top: 40px;
+    font-family: Outfit, sans-serif;
+    font-size: 16px;
+}
+.goBackButton:hover {
+    background-color: #cccccc; 
+}

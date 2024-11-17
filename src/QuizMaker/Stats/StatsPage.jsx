@@ -1,6 +1,11 @@
 import React from "react";
 
 function StatsPage(){
-    return <h1>StatsPage</h1>
+    // return (
+    //     //button
+    //     //Name
+    //     //GeneralInfo
+    //     //QuizStats
+    // );
 }
 export default StatsPage;
