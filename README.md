@@ -84,14 +84,9 @@ Ensure you have the following installed:
 
 ---
 
-## **License**
-
-This project is licensed under the MIT License. See the `LICENSE` file for details.
-
----
 
 ## **Contact**
 
-For inquiries or feedback, reach out to us at [support@quizmaster.com](mailto:support@quizmaster.com).
+For inquiries or feedback, reach out to us at [mohammedalhadiasiri@gmail.com](mailto:mohammedalhadiasiri@gmail.com).
 
 Start creating and enjoying quizzes with QuizMaster today! 🚀
