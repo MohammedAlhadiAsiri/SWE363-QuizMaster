@@ -1,6 +1,12 @@
 .createQuiz{
     display: flex;
     text-align: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
 }
 .quizNameInput{
     background: none;
@@ -22,10 +28,11 @@
 }
 .sidebar{
     display: grid;
-    gap: 550px;
+    justify-content: space-between;
+    gap: 300px;
     background-color: #ccc;
     border-radius: 8px;
-
+    overflow:auto;
 }
 
 .topbar{
@@ -86,3 +93,25 @@
 .addQuestionButton:hover {
     background-color: #3399ff; 
 }
+
+
+.saveButton{
+    position: absolute;
+   right:0;
+   /* vertically center the icon */
+   top: 50%; transform: translateY(-50%);
+   margin: 30px;
+   background-color: #2BAFFC; 
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 120px;
+    height: 50px;
+}
+.saveButton:hover {
+    background-color: #3399ff; 
+}
+
