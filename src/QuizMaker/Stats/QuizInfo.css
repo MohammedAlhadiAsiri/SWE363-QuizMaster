@@ -1,0 +1,25 @@
+.quizInfoContainer{
+    display: flex;
+    justify-content: center;
+    font-family: Outfit, sans-serif;
+    font-size: 20px;
+    height: 100px;
+}
+.quizInfo{
+    display: grid;
+    justify-content:left;
+    width: 350px;
+    background-color: rgb(255, 255, 255);
+    box-shadow: 1px 1px 5px rgb(202, 202, 202);
+    color:#2BAFFC;
+    
+}
+
+.quizInfoText{
+    color: #9d9d9d;
+    display: flex;
+    font-size: 26px;
+    margin: 0px;
+    padding: 0px;
+    margin-left: 2px;
+}

@@ -1,0 +1,22 @@
+.quizStatsContainer{
+    display: flex;
+    justify-content: space-evenly;
+}
+.statCards{
+    background-color: rgb(255, 255, 255);
+    box-shadow: 1px 1px 5px rgb(202, 202, 202);
+    width: 350px;
+    height: 350px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    display: grid;
+    padding: 45px;
+    font-family: Outfit, sans-serif;
+    font-size: 58px;
+    color: #2BAFFC;
+}
+.statsText{
+    font-family: Outfit, sans-serif;
+    font-size: 38px;
+    color: #9d9d9d;
+}

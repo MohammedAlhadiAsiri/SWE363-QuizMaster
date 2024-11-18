@@ -1,0 +1,41 @@
+.statsPage{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+.statsMainContainer{
+    display: grid;
+}
+
+.statsExitButton{
+    background-color: #3B5E73; 
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 100px;
+    height: 50px;
+    display: block;
+    justify-content: left;
+    margin: 30px;
+}
+.statsExitButton:hover{
+    background-color: #1e2f3a;
+}
+.quizNameStats{
+    color:#2BAFFC;
+    display: flex;
+    margin-left: 140px;
+    font-family: Outfit, sans-serif;
+    font-size: 32px;
+    justify-content: center;
+    margin-right: 850px;
+    
+}
+.statsWord{
+    color: #9d9d9d;
+}

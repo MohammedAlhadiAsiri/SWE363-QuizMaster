@@ -11,7 +11,7 @@ function CreateQuizPage() {
     const navigate = useNavigate();
     const [openQuestionTypeModal, setOpenQuestionTypeModal] = useState(false);
     const [openDifficultyModal, setOpenDifficultyModal] = useState(false);
-    const [showPublishedModal, setShowPublishedModal] = useState(false); // Added state for modal
+    const [showPublishedModal, setShowPublishedModal] = useState(false); 
     const [quizName, setQuizName] = useState('');
     const [questionCards, setQuestionCards] = useState([]);
 
@@ -89,12 +89,12 @@ function CreateQuizPage() {
             })),
         };
 
-        setShowPublishedModal(true); // Show published modal
+        setShowPublishedModal(true); 
     };
 
     const closePublishedModal = () => {
         setShowPublishedModal(false);
-        navigate('/quiz-maker-dashboard'); // Redirect to dashboard
+        navigate('/quiz-maker-dashboard');
     };
 
     return (
