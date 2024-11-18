@@ -8,7 +8,7 @@ function StatsPage(){
     //temp data for this phase
     const dummyData = {
         creator: 'Ziyad',
-        name: 'World Geography',
+        name: 'Sample Quiz',
         questionsNumber: 2,
         difficulty: 'Normal',
         attempts: 3,
