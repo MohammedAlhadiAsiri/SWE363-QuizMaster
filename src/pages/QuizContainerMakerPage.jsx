@@ -3,7 +3,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import QuizCard from './QuizCardMakerPage';
 import '../QuizMaker/Dashboard/QuizzesContainer.css'
-function QuizzesContainerMakerPage(){
+function QuizContainerMakerPage(){
     const navigate = useNavigate();
     function handleClick(){navigate('/create-quiz')}
     return (
@@ -18,4 +18,4 @@ function QuizzesContainerMakerPage(){
     );
 }
 
-export default QuizzesContainerMakerPage;
+export default QuizContainerMakerPage;

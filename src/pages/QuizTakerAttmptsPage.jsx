@@ -1,6 +1,6 @@
 //This is QuizMakerPage.jsx
 import React from 'react'
-import QuizzesContainer from './QuizContainerMakerPage'
+import QuizzesContainer from './TakerAttmptsContainer'
 import Navbar from '../Navbar';
 import '../QuizMaker/Dashboard/QuizMakerDashboard.css'
 function QuizMakerPage(){

@@ -1,18 +1,21 @@
-//This is QuizCardMakerPage.jsx
+//This is TakerQuizCard.jsx
 import React from 'react';
-import EditButton from '../QuizMaker/Dashboard/EditButton';
+import RetryButton from './RetryButton';
+import ShowResult from './ShowResultFiled';
 import QuizName from '../QuizMaker/Dashboard/QuizName';
 import '../QuizMaker/Dashboard/QuizCard.css'
 //temp database
 const quizzesNames = ['HTML Practice', 'World Geo', 'CSS Practice'];
 
-function QuizCardMaker(){
+function TakerQuizCard(){
     return (
         quizzesNames.map((quiz) => <div className='quizCard'>
-            <QuizName name={quiz}/>
-            <EditButton />
+            <RetryButton />
+            <QuizName name={quiz}/>    
+            <ShowResult />
+        
         </div>)
         
     );
 }
-export default QuizCardMaker;
+export default TakerQuizCard;
