@@ -1,0 +1,169 @@
+/* ProfilePage.css */
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+}
+
+.profilePage {
+    display: flex;
+    height: 100vh;
+}
+
+.sidebar {
+    width: 250px;
+    background-color: #2c3e50;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 20px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.userInfo {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.userName {
+    margin: 0;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.userRole {
+    margin: 5px 0 20px;
+    font-size: 14px;
+    font-style: italic;
+    color: #bdc3c7;
+}
+
+.navButtons .navButton,
+.actionButtons .logoutButton,
+.actionButtons .deleteButton {
+    width: 100%;
+    padding: 10px 15px;
+    margin-bottom: 10px;
+    font-size: 16px;
+    color: white;
+    background-color: #34495e;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: left;
+    transition: background-color 0.3s ease;
+}
+
+.navButton:hover,
+.logoutButton:hover {
+    background-color: #1abc9c;
+}
+
+.deleteButton {
+    background-color: #e74c3c;
+}
+
+.deleteButton:hover {
+    background-color: #c0392b;
+}
+
+.mainSection {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    background-color: #34495e;
+    color: white;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.websiteName {
+    margin: 0;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.pageTitle {
+    font-size: 18px;
+    font-weight: lighter;
+}
+
+.bodyContent {
+    flex: 1;
+    padding: 20px;
+    background-color: #ffffff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin: 20px;
+    border-radius: 8px;
+}
+
+.bodyContent h2 {
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+.formGroup {
+    margin-bottom: 20px;
+}
+
+.formGroup label {
+    display: block;
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.inputField {
+    width: 100%;
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: #f9f9f9;
+}
+
+.inputField:focus {
+    border-color: #1abc9c;
+    outline: none;
+}
+
+.passwordContainer {
+    display: flex;
+    align-items: center;
+}
+
+.togglePasswordButton {
+    margin-left: 10px;
+    padding: 5px;
+    font-size: 16px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #333;
+}
+
+.saveButton {
+    display: block;
+    width: 100%;
+    padding: 10px 15px;
+    font-size: 16px;
+    background-color: #1abc9c;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+    transition: background-color 0.3s ease;
+}
+
+.saveButton:hover {
+    background-color: #16a085;
+}
