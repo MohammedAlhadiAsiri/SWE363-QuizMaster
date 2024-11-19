@@ -21,7 +21,7 @@ function StatsPage(){
         <div className="statsPage">
             
             <button className="statsExitButton" onClick={handleExitClick}>Exit</button>
-
+            <p className="exitIcon" onClick={handleExitClick}>X</p>
             <div className='statsMainContainer'>    
                 <QuizNameStats name={dummyData.name}/>
                 <QuizInfo questionsNumber={dummyData.questionsNumber}

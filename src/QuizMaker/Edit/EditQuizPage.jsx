@@ -80,6 +80,11 @@ function EditQuizPage() {
             </div>
 
             <div className="mainPage">
+                <div className='mobileTopbar'>
+                    <h2 className='closeIcon' onClick={() => navigate('/quiz-maker-dashboard')}>X</h2>
+                    <h2>Create Quiz</h2>
+                    <p onClick={handleSaveClick} className='publishText'>Save</p>
+                </div>
                 <div className="topbar">
                     <input
                         type="text"
@@ -105,7 +110,7 @@ function EditQuizPage() {
                         />
                     ))}
                 </div>
-
+                <button className='mobileAddQuestionButton' onClick={() => setOpenQuestionTypeModal(true)}>Add Question</button>        
                 {openQuestionTypeModal && (
                     <QuestionTypeModal addQuestionProp={addQuestion} openModal={setOpenQuestionTypeModal} />
                 )}

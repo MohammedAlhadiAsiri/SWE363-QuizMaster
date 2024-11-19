@@ -4,9 +4,11 @@
     left: 0;
     width: 100%;
     height: 100%;
+    overflow:auto;
 }
 .statsMainContainer{
     display: grid;
+    justify-content: center;
 }
 
 .statsExitButton{
@@ -28,14 +30,53 @@
 }
 .quizNameStats{
     color:#2BAFFC;
-    display: flex;
-    margin-left: 140px;
+    display: block;
+    width: 30%;
+    margin: 0 140vw 0 30vw;
     font-family: Outfit, sans-serif;
     font-size: 32px;
-    justify-content: center;
-    margin-right: 850px;
-    
 }
 .statsWord{
     color: #9d9d9d;
+}
+.exitIcon{display: none;}
+
+@media (max-width: 576px) {
+    .statsMainContainer {
+        display: grid;
+    }
+    .statsExitButton{display: none;}
+    .exitIcon{
+        display: flex;
+        font-family: Outfit, sans-serif;
+        font-size: 32px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        justify-content: left;
+        margin: 30px;
+    }
+    .quizNameStats{
+        margin: auto;
+        width: 90vw;
+    }
+
+}
+@media (max-width: 768px) {
+    .statsMainContainer {
+        display: grid;
+    }
+    .statsExitButton{display: none;}
+    .exitIcon{
+        display: flex;
+        font-family: Outfit, sans-serif;
+        font-size: 32px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        justify-content: left;
+        margin: 30px;
+    }
+    .quizNameStats{
+        margin: auto;
+        width: 90vw;
+    }
 }

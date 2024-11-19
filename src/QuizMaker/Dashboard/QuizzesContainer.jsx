@@ -10,7 +10,8 @@ function QuizzesContainer(){
         <section className='quizzesContainer'>
             <div className='navBar'>
                 <p className='quizzes'>Quizzes</p>
-                <input type='text' placeholder='Search by quiz name'></input>
+                <p className='addQuizIcon' onClick={handleClick}>+</p>
+                <input type='text' placeholder='Search by quiz name' className='searchFilter'></input>
                 <button className='createButton' onClick={handleClick}>Create</button>
             </div>
             <QuizCard />

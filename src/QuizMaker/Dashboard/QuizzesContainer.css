@@ -47,7 +47,38 @@
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
+.addQuizIcon{
+    font-family: Outfit, sans-serif;
+    font-size: 50px;
+    color: #2BAFFC;
+    display: none;
+}
 
 .createButton:hover {
     background-color: #3399ff;
+}
+@media (max-width: 576px) {
+    .quizzesContainer {
+        display: grid;
+        justify-content: center;
+        height: fit-content;
+    }
+    .createButton{display:none;}
+    .searchFilter{display:none;}
+    .addQuizIcon{
+        display: flex;
+    }
+}
+@media (max-width: 768px) {
+    .quizzesContainer {
+        display: grid;
+        justify-content: center;
+        height: fit-content;
+    }
+    .createButton{display:none;}
+    .searchFilter{display:none;}
+    .addQuizIcon{
+        display: flex;
+    }
+
 }

@@ -3,16 +3,14 @@
     justify-content: center;
     font-family: Outfit, sans-serif;
     font-size: 20px;
-    height: 100px;
 }
 .quizInfo{
     display: grid;
     justify-content:left;
-    width: 350px;
     background-color: rgb(255, 255, 255);
     box-shadow: 1px 1px 5px rgb(202, 202, 202);
     color:#2BAFFC;
-    
+    width: 30vw;
 }
 
 .quizInfoText{
@@ -22,4 +20,27 @@
     margin: 0px;
     padding: 0px;
     margin-left: 2px;
+}
+
+@media (max-width: 576px) {
+    .quizInfoContainer{
+        font-size: 12px;
+        justify-content: center;
+        margin: auto;
+        padding: 20px;
+    }
+    .quizInfoText{
+        font-size: 16px;
+    }
+}
+@media (max-width: 768px) {
+    .quizInfoContainer{
+        font-size: 12px;
+        justify-content: center;
+        margin: auto;
+        padding: 20px;
+    }
+    .quizInfoText{
+        font-size: 16px;
+    }
 }

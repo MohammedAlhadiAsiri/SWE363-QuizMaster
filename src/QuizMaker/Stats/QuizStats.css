@@ -1,6 +1,6 @@
 .quizStatsContainer{
     display: flex;
-    justify-content: space-evenly;
+    justify-content: center;
 }
 .statCards{
     background-color: rgb(255, 255, 255);
@@ -9,6 +9,9 @@
     height: 350px;
     margin-top: 50px;
     margin-bottom: 50px;
+    margin-left: 16vw;
+    margin-right: 16vw;
+
     display: grid;
     padding: 45px;
     font-family: Outfit, sans-serif;
@@ -19,4 +22,16 @@
     font-family: Outfit, sans-serif;
     font-size: 38px;
     color: #9d9d9d;
+}
+@media (max-width: 576px) {
+    .quizStatsContainer{
+        display: grid;
+
+    }
+}
+@media (max-width: 768px) {
+    .quizStatsContainer{
+        display: grid;
+
+    }
 }

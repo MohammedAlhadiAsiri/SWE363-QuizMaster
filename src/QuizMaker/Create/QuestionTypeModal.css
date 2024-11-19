@@ -65,3 +65,59 @@
 .modalAddQuestionButton:hover {
     background-color: #3399ff; 
 }
+
+@media (max-width: 576px) {
+    .questionTypeModal-container{
+        content: " ";
+        width: 100%;
+        height: 100%;
+        margin:auto;
+        top: 0;
+        left: 0;
+    }
+    .questionTypeModal-body{
+        margin-top: 10vh;
+        font-size: 32px;
+    }
+    .modalAddQuestionButton{
+        margin-top: 30vh;
+        width: 50vw;
+        height: 8vh;
+    }
+    .questionTypeModal-footer{
+        display: grid;
+    }
+    .choiceContainer{
+        display: flex;
+        font-size: 22px;
+        font-weight: bold;
+    }
+}
+@media (max-width: 768px) {
+    .questionTypeModal-container{
+        content: " ";
+        width: 100%;
+        height: 100%;
+        margin:auto;
+        top: 0;
+        left: 0;
+    }
+    .questionTypeModal-body{
+        margin-top: 10vh;
+        font-size: 32px;
+    }
+    .modalAddQuestionButton{
+        margin-top: 30vh;
+        width: 50vw;
+        height: 8vh;
+    }
+    .questionTypeModal-footer{
+        display: grid;
+    }
+    .choiceContainer{
+        display: flex;
+        font-size: 22px;
+        font-weight: bold;
+    }
+
+}
