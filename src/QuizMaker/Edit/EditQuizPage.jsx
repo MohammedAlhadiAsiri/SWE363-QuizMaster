@@ -3,9 +3,9 @@ import QuestionCard from '../Create/QuestionCard';
 import QuestionTypeModal from '../Create/QuestionTypeModal';
 import DifficultyModal from '../Create/DifficultyModal';
 import QuestionsList from '../Create/QuestionsList';
-//import './EditQuizPage.css';
 import { useNavigate } from 'react-router-dom';
 
+// Dummy quiz data for now
 const dummyQuiz = {
     name: "Sample Quiz",
     questions: [
@@ -31,7 +31,6 @@ function EditQuizPage() {
     const [openQuestionTypeModal, setOpenQuestionTypeModal] = useState(false);
 
     useEffect(() => {
-        // Load dummy quiz data
         setQuizName(dummyQuiz.name);
         setQuestionCards(
             dummyQuiz.questions.map((q) => ({
@@ -42,16 +41,19 @@ function EditQuizPage() {
         );
     }, []);
 
+    // Add new question to the quiz
     const addQuestion = (type) => {
         setQuestionCards([...questionCards, { type, questionText: '', answers: Array(4).fill('') }]);
         setOpenQuestionTypeModal(false);
     };
 
+    // Remove question from the quiz
     const removeQuestion = (index) => {
         const updatedQuestions = questionCards.filter((_, i) => i !== index);
         setQuestionCards(updatedQuestions);
     };
 
+    // Update a question's content
     const updateQuestion = (index, updatedQuestion) => {
         const updatedQuestions = questionCards.map((question, i) =>
             i === index ? updatedQuestion : question
@@ -59,6 +61,7 @@ function EditQuizPage() {
         setQuestionCards(updatedQuestions);
     };
 
+    // Save the quiz and navigate back
     const handleSaveClick = () => {
         const updatedQuiz = {
             name: quizName,
@@ -99,6 +102,7 @@ function EditQuizPage() {
                 </div>
 
                 <div className="questionCards">
+                    {/* Render each question card */}
                     {questionCards.map((question, index) => (
                         <QuestionCard
                             key={index}
@@ -110,7 +114,9 @@ function EditQuizPage() {
                         />
                     ))}
                 </div>
+                {/* Mobile button to add question */}
                 <button className='mobileAddQuestionButton' onClick={() => setOpenQuestionTypeModal(true)}>Add Question</button>        
+                {/* Modal for selecting question type */}
                 {openQuestionTypeModal && (
                     <QuestionTypeModal addQuestionProp={addQuestion} openModal={setOpenQuestionTypeModal} />
                 )}

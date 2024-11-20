@@ -65,7 +65,7 @@
 .modalAddQuestionButton:hover {
     background-color: #3399ff; 
 }
-
+/* Mobile view */
 @media (max-width: 576px) {
     .questionTypeModal-container{
         content: " ";
@@ -93,6 +93,7 @@
         font-weight: bold;
     }
 }
+/* Tablet view */
 @media (max-width: 768px) {
     .questionTypeModal-container{
         content: " ";

@@ -1,4 +1,3 @@
-//This is QuizName.jsx
 import React from 'react';
 import './QuizName.css'
 function QuizName(props){

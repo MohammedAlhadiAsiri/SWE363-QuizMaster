@@ -1,4 +1,3 @@
-//This is QuizMakerDashboard.jsx
 import React from 'react'
 import QuizzesContainer from './QuizzesContainer'
 import Navbar from '../../Navbar';

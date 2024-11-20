@@ -63,11 +63,13 @@
     display:inline-block;
     /* justify-content: center; */
 }
+/* Mobile view */
 @media (max-width: 576px) {
     .card{
         width: 80vw;
     }
 }
+/* Tablet view */
 @media (max-width: 768px) {
     .card{
         width: 80vw;

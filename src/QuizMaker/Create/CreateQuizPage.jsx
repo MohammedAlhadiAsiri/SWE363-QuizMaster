@@ -9,9 +9,11 @@ import { useNavigate } from 'react-router-dom';
 
 function CreateQuizPage() {
     const navigate = useNavigate();
+    // initial modal states
     const [openQuestionTypeModal, setOpenQuestionTypeModal] = useState(false);
     const [openDifficultyModal, setOpenDifficultyModal] = useState(false);
     const [showPublishedModal, setShowPublishedModal] = useState(false); 
+    //initial quiz name and questions cards states
     const [quizName, setQuizName] = useState('');
     const [questionCards, setQuestionCards] = useState([]);
 
@@ -27,7 +29,7 @@ function CreateQuizPage() {
         setQuestionCards([...questionCards, { type, questionText: '', answers: Array(4).fill('') }]);
         setOpenQuestionTypeModal(false);
     };
-
+    //
     const removeQuestion = (index) => {
         const updatedQuestions = questionCards.filter((_, i) => i !== index);
         setQuestionCards(updatedQuestions);
@@ -39,7 +41,7 @@ function CreateQuizPage() {
         );
         setQuestionCards(updatedQuestions);
     };
-
+    // Quiz validation before publishing 
     const validateQuizData = () => {
         if (!quizName) return "Quiz name is required.";
         if (questionCards.length === 0) return "At least one question is required.";

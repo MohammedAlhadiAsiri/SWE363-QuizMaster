@@ -9,6 +9,7 @@ const quizzesNames = ['HTML Practice', 'World Geo', 'CSS Practice'];
 
 function QuizCard(){
     return (
+        // Map through quizzes and display each quiz card
         quizzesNames.map((quiz) => <div className='quizCard'>
             <StatsButton />
             <QuizName name={quiz}/>

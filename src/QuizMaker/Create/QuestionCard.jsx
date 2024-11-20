@@ -2,15 +2,18 @@ import React from 'react';
 import './QuestionCard.css';
 
 function QuestionCard({ type, index, questionText, answers, onUpdate }) {
+    // Update the question text
     const handleQuestionTextChange = (e) => {
         onUpdate({ questionText: e.target.value, type, answers });
     };
 
+    // Update the specific answer
     const handleAnswerChange = (answerIndex, value) => {
         const updatedAnswers = answers.map((answer, i) => (i === answerIndex ? value : answer));
         onUpdate({ questionText, type, answers: updatedAnswers });
     };
 
+    // Render multiple-choice question answers
     const mcq = (
         <div className='answersContainer'>
             {answers.map((answer, i) => (
@@ -28,6 +31,7 @@ function QuestionCard({ type, index, questionText, answers, onUpdate }) {
         </div>
     );
 
+    // Render true/false options
     const tf = (
         <div className='answersContainer'>
             {['True', 'False'].map((option, i) => (
