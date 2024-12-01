@@ -1,10 +1,10 @@
 import "../style.css";
-import Header from "../components/Header";
+import Navbar from "../Navbar"
 
 const AboutUs = () => {
     return (
         <>
-            <Header />
+            <Navbar/>
             <div className="main-container">
                 <div className="aoutUs-container">
                     <h1>ABOUT US</h1>

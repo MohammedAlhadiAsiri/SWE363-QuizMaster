@@ -1,48 +1,17 @@
-import "./App.css"
-import Navbar from "./Navbar.jsx";
-import SignInModal from "./SignInModal.jsx";
-import SignUpModal from "./SignUpModal.jsx";
-import Hero from "./Hero.jsx";
-import React, { useState } from "react";
+import { BrowserRouter as Router, Routes, Route, BrowserRouter } from "react-router-dom";
+import AboutUs from "./pages/AboutUs"
+import Home from "./Home"; 
+import QuizMakerDashboard from "./QuizMaker/Dashboard/QuizMakerDashboard"
 
+const App = () => {
+    return (
+            <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/AboutUs" element={<AboutUs />} />
+                <Route path="/quiz-maker-dashboard" element={<QuizMakerDashboard />} />
 
-function App() {
-
-  const [showSignUpModal, setShowSignUpModal] = useState(false);
-  const [showSignInModal, setShowSignInModal] = useState(false);
-
-
-  const openSignUpModal = () => {
-    setShowSignUpModal(true);
-    setShowSignInModal(false);
+            </Routes>
+    );
 };
 
-const closeSignUpModal = () => {
-    setShowSignUpModal(false);
-};
-
-const openSignInModal = () => {
-  setShowSignInModal(true);
-  setShowSignUpModal(false);
-};
-
-const closeSignInModal = () => {
-  setShowSignInModal(false);
-};
-
-
-  return(
-    <div>
-    <Navbar openModal={openSignUpModal} />
-    <div className={`main-content ${showSignUpModal ? "blur" : ""}`}>
-        <Hero openModal={openSignUpModal} />
-    </div>
-    {showSignUpModal && <SignUpModal onClose={closeSignUpModal} openModal={openSignInModal} />}
-    {showSignInModal && <SignInModal onClose={closeSignInModal} openModal={openSignUpModal} />}
-    
-
-</div>
-  );
-}
-
-export default App
+export default App;

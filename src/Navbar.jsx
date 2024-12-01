@@ -1,7 +1,6 @@
 import "./Navbar.css";
 import React, { useState } from "react";
 import ContactUsModal from "./ContactUsModal";
-import GetStartedButton from "./GetStartedButton";
 import SignInModal from "./SignInModal";
 import SignUpModal from "./SignUpModal";
 import { useNavigate } from 'react-router-dom';
@@ -44,15 +43,21 @@ function Navbar(){
     };
 
     const navigate = useNavigate();
-    function handleClick(){navigate('/');}
+    function handleClick(){
+        if (window.location.pathname == "/")
+        window.location.reload()
+    else 
+        navigate("/")
+    }
+
     return(
-        <header className="header">
+        <header className="main-header">
             <div className="logo" onClick={handleClick}>QuizMaster</div>
             <nav className={`navbar ${isOpen ? "open" : ""}`}>
                 <button className="navbar-toggle" onClick={toggleMenu}>
                     ☰
                 </button>
-            <a href="#about">About</a>
+            <a href="/AboutUs">About</a>
             <a onClick={openContactUsModal} >Contact Us</a>
             </nav>
             <button className="navbar-toggle" onClick={toggleMenu}>
