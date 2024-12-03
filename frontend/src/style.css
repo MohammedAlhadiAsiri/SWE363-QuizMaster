@@ -51,47 +51,49 @@
 
 .main-container {
     margin-top: 100px;
-    left:200px;
-    width: 1256px;
-    height: 500px;
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-left: 50px;
+    margin-right: 50px;
+    margin-top:150px
 }
 .aoutUs-container {
     /* Frame 12 */
-
     width: 400px;
     height: 100px;
-
-    background: #ffffff;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.4);
-    border-style: solid;
-    border-color: antiquewhite;
     border-radius: 4px;
-    background-color: rgb(127, 208, 255);
     display: flex;
     align-items: center;
     justify-content: center;
     margin-top: 20px;
 }
+
+.aoutUs-container h1 {
+
+    font-weight: 600;
+
+}
+
 .para {
     font-family: "Outfit";
     font-style: normal;
-    font-weight: 600;
+    font-weight: 400;
     font-size: 40px;
-    line-height: 50px;
+    line-height: 45px;
     align-items: center;
-    text-align: justify;
+    /* text-align: justify; */
     text-transform: capitalize;
 
     margin: 70px 0 0;
-    color: rgba(43, 175, 252, 0.66);
+    color: #2BAFFC;
+
 }
 
 .quiz-master {
-    color: #000750;
-    font-weight: 900;
+    font-weight: 600;
+    color: #2BAFFC;
+
 }
 
 @media (min-width: 751px) and (max-width: 999px) {

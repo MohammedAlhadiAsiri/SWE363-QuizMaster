@@ -1,33 +1,82 @@
 require('dotenv').config();
+const express = require('express');
+const cors = require('cors');
+const bodyParser = require('body-parser');
+const { MongoClient } = require('mongodb');
 
-const { MongoClient, ServerApiVersion } = require('mongodb');
+const app = express();
+app.use(cors());
+app.use(bodyParser.json());
 
 // MongoDB connection
 const username = process.env.MONGO_USERNAME;
 const password = process.env.MONGO_PASSWORD;
 
+const uri = `mongodb+srv://${username}:${password}@cluster0.jnidl.mongodb.net/?retryWrites=true&w=majority`;
+const client = new MongoClient(uri);
 
-const uri = `mongodb+srv://${username}:${password}@cluster0.jnidl.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0`;
+// Login route
+app.post('/login', async (req, res) => {
+  const { email, password } = req.body;
 
-// Create a MongoClient with a MongoClientOptions object to set the Stable API version
-const client = new MongoClient(uri, {
-  serverApi: {
-    version: ServerApiVersion.v1,
-    strict: true,
-    deprecationErrors: true,
+  try {
+    await client.connect();
+    const database = client.db('QuizMaster');
+    const usersCollection = database.collection('users');
+
+    // Find the user by email and password
+    const user = await usersCollection.findOne({ email, password });
+
+    if (user) {
+      res.status(200).json({ message: 'Login successful', role: user.role });
+    } else {
+      res.status(401).json({ message: 'Invalid email or password' });
+    }
+  } catch (error) {
+    console.error('Error connecting to MongoDB:', error);
+    res.status(500).json({ message: 'Internal server error' });
+  } finally {
+    await client.close();
   }
 });
 
-async function run() {
+// Sign Up route
+app.post('/signup', async (req, res) => {
+  const { firstName, lastName, email, password, role } = req.body;
+
+  if (!firstName || !lastName || !email || !password || !role) {
+    return res.status(400).json({ message: 'All fields are required' });
+  }
+
   try {
-    // Connect the client to the server	(optional starting in v4.7)
     await client.connect();
-    // Send a ping to confirm a successful connection
-    await client.db("admin").command({ ping: 1 });
-    console.log("Pinged your deployment. You successfully connected to MongoDB!");
+    const database = client.db('QuizMaster');
+    const usersCollection = database.collection('users');
+
+    // Check if the email already exists
+    const existingUser = await usersCollection.findOne({ email });
+
+    if (existingUser) {
+      return res.status(409).json({ message: 'Email already registered' });
+    }
+
+    // Insert the new user into the database
+    const newUser = { firstName, lastName, email, password, role };
+    await usersCollection.insertOne(newUser);
+
+    // Respond with the new user's role
+    res.status(201).json({ message: 'User registered successfully', role });
+  } catch (error) {
+    console.error('Error connecting to MongoDB:', error);
+    res.status(500).json({ message: 'Internal server error' });
   } finally {
-    // Ensures that the client will close when you finish/error
     await client.close();
   }
-}
-run().catch(console.dir);
+});
+
+
+// Start the server
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+});
