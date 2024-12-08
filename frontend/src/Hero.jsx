@@ -11,8 +11,8 @@ function Hero({openModal}){
                 <GetStartedButton onClick={openModal}/>
             </div>
             <div className="picture-container">
-                <img src="src\assets\smiling-happy-indian-student-with-backpack-pointing-his-finger-wall 1.png" className="picture"></img>
-                <img src="src\assets\picture-background.svg" className="picture-background"></img>
+                <img src=".\public\smiling-happy-indian-student-with-backpack-pointing-his-finger-wall 1.png" className="picture"></img>
+                <img src=".\public\picture-background.svg" className="picture-background"></img>
 
             </div>
        </div>
