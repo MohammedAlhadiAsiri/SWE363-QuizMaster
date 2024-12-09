@@ -4,7 +4,7 @@ import End from "../components/End";
 import style from "../styles/questions-quizzes-style.module.css";
 import examData from "../Json/questions.json"; // Import the JSON file
 
-export default function Questions() {
+export default function Tq() {
     const [selectedOptions, setSelectedOptions] = useState({}); // Track selected options per question
 
     const handleOptionChange = (questionId, choiceId) => {
@@ -42,21 +42,14 @@ export default function Questions() {
                         {/* Display Choices */}
                         <div className={style.field}>
                             {question.choices.map((choice) => (
-                                <button
+                                <div
                                     key={choice.id}
-                                    type="button"
                                     className={`${style.field_choise} ${
                                         selectedOptions[question.id] ===
                                         choice.id
                                             ? style.selected
                                             : ""
                                     }`}
-                                    onClick={() =>
-                                        handleOptionChange(
-                                            question.id,
-                                            choice.id
-                                        )
-                                    }
                                 >
                                     <input
                                         type="radio"
@@ -80,7 +73,7 @@ export default function Questions() {
                                     >
                                         {choice.text}
                                     </label>
-                                </button>
+                                </div>
                             ))}
                         </div>
                     </section>

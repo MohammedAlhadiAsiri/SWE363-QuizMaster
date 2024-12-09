@@ -1,0 +1,44 @@
+[
+    {
+        "id": 1,
+        "type": "Multiple_Choice",
+        "level": "Hard",
+        "title": "HTML Basics",
+        "instructor": "Dr. Ahmed"
+    },
+    {
+        "id": 2,
+        "type": "Multiple_Choice",
+        "level": "Medium",
+        "title": "CSS Fundamentals",
+        "instructor": "Dr. Sara"
+    },
+    {
+        "id": 3,
+        "type": "True/False",
+        "level": "Easy",
+        "title": "JavaScript Basics",
+        "instructor": "Dr. John"
+    },
+    {
+        "id": 4,
+        "type": "Multiple_Choice",
+        "level": "Medium",
+        "title": "React Essentials",
+        "instructor": "Dr. Emily"
+    },
+    {
+        "id": 5,
+        "type": "True/False",
+        "level": "Hard",
+        "title": "Node.js Advanced",
+        "instructor": "Dr. Mark"
+    },
+    {
+        "id": 6,
+        "type": "Multiple_Choice",
+        "level": "Easy",
+        "title": "Database Basics",
+        "instructor": "Dr. Julia"
+    }
+]

@@ -1,6 +1,8 @@
 import { useState } from "react";
 import Header from "../components/Header";
 import End from "../components/End";
+import style from "../styles/questions-quizzes-style.module.css";
+
 export default function Filter() {
     const [selectedOption, setSelectedOption] = useState("");
 
@@ -10,20 +12,20 @@ export default function Filter() {
     return (
         <>
             <Header />
-            <div className="question-main">
-                <div className="question-title">Filter</div>
-                <section className="question">
-                    <div className="question-number">
-                        <p className="question-number-text">Question 1</p>
-                        <p className="question-number-text">1/20</p>
+            <div className={style.question_main}>
+                <div className={style.question_title}>Filter</div>
+                <section className={style.question}>
+                    <div className={style.question_number}>
+                        <p className={style.question_number_text}>Question 1</p>
+                        <p className={style.question_number_text}>1/20</p>
                     </div>
-                    <div className="question-text">Difficulty</div>
-                    <div className="field">
+                    <div className={style.question_text}>Difficulty</div>
+                    <div className={style.field}>
                         {/* First Option */}
                         <button
                             type="button"
-                            className={`field-choise ${
-                                selectedOption === "hard" ? "selected" : ""
+                            className={`${style.field_choise} ${
+                                selectedOption === "hard" ? style.selected : ""
                             }`}
                             onClick={() => handleButtonClick("hard")}
                         >
@@ -35,7 +37,10 @@ export default function Filter() {
                                 checked={selectedOption === "hard"}
                                 onChange={() => setSelectedOption("hard")}
                             />
-                            <label htmlFor="hard" className="field-choise-text">
+                            <label
+                                htmlFor="hard"
+                                className={style.field_choise_text}
+                            >
                                 Hard
                             </label>
                         </button>
@@ -43,8 +48,8 @@ export default function Filter() {
                         {/* Second Option */}
                         <button
                             type="button"
-                            className={`field-choise ${
-                                selectedOption === "easy" ? "selected" : ""
+                            className={`${style.field_choise} ${
+                                selectedOption === "easy" ? style.selected : ""
                             }`}
                             onClick={() => handleButtonClick("easy")}
                         >
@@ -56,7 +61,10 @@ export default function Filter() {
                                 checked={selectedOption === "easy"}
                                 onChange={() => setSelectedOption("easy")}
                             />
-                            <label htmlFor="easy" className="field-choise-text">
+                            <label
+                                htmlFor="easy"
+                                className={style.field_choise_text}
+                            >
                                 Easy
                             </label>
                         </button>

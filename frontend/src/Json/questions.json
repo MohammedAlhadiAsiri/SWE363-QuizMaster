@@ -1,0 +1,155 @@
+{
+    "title": "General Knowledge Quiz",
+    "questions": [
+        {
+            "id": 1,
+            "text": "What is the longest river in the world?",
+            "choices": [
+                { "id": "nile", "text": "Nile" },
+                { "id": "amazon", "text": "Amazon" }
+            ],
+            "correctAnswer": "amazon"
+        },
+        {
+            "id": 2,
+            "text": "What is the capital of France?",
+            "choices": [
+                { "id": "paris", "text": "Paris" },
+                { "id": "london", "text": "London" },
+                { "id": "berlin", "text": "Berlin" },
+                { "id": "madrid", "text": "Madrid" }
+            ],
+            "correctAnswer": "paris"
+        },
+        {
+            "id": 3,
+            "text": "Who wrote 'Hamlet'?",
+            "choices": [
+                { "id": "shakespeare", "text": "William Shakespeare" },
+                { "id": "dickens", "text": "Charles Dickens" }
+            ],
+            "correctAnswer": "shakespeare"
+        },
+        {
+            "id": 4,
+            "text": "What is the largest planet in our solar system?",
+            "choices": [
+                { "id": "jupiter", "text": "Jupiter" },
+                { "id": "mars", "text": "Mars" },
+                { "id": "earth", "text": "Earth" },
+                { "id": "venus", "text": "Venus" },
+                { "id": "saturn", "text": "Saturn" }
+            ],
+            "correctAnswer": "jupiter"
+        },
+        {
+            "id": 5,
+            "text": "What is the boiling point of water?",
+            "choices": [
+                { "id": "100", "text": "100°C" },
+                { "id": "212", "text": "212°F" }
+            ],
+            "correctAnswer": "100"
+        },
+        {
+            "id": 6,
+            "text": "Which country has the largest population?",
+            "choices": [
+                { "id": "china", "text": "China" },
+                { "id": "india", "text": "India" },
+                { "id": "usa", "text": "United States" }
+            ],
+            "correctAnswer": "china"
+        },
+        {
+            "id": 7,
+            "text": "What is the chemical symbol for gold?",
+            "choices": [
+                { "id": "au", "text": "Au" },
+                { "id": "ag", "text": "Ag" },
+                { "id": "cu", "text": "Cu" }
+            ],
+            "correctAnswer": "au"
+        },
+        {
+            "id": 8,
+            "text": "Who painted the Mona Lisa?",
+            "choices": [
+                { "id": "davinci", "text": "Leonardo da Vinci" },
+                { "id": "vangogh", "text": "Vincent van Gogh" },
+                { "id": "picasso", "text": "Pablo Picasso" }
+            ],
+            "correctAnswer": "davinci"
+        },
+        {
+            "id": 9,
+            "text": "What is the smallest continent by land area?",
+            "choices": [
+                { "id": "australia", "text": "Australia" },
+                { "id": "antarctica", "text": "Antarctica" },
+                { "id": "europe", "text": "Europe" }
+            ],
+            "correctAnswer": "australia"
+        },
+        {
+            "id": 10,
+            "text": "What is the square root of 64?",
+            "choices": [
+                { "id": "8", "text": "8" },
+                { "id": "6", "text": "6" },
+                { "id": "10", "text": "10" }
+            ],
+            "correctAnswer": "8"
+        },
+        {
+            "id": 11,
+            "text": "Which is the fastest land animal?",
+            "choices": [
+                { "id": "cheetah", "text": "Cheetah" },
+                { "id": "lion", "text": "Lion" },
+                { "id": "antelope", "text": "Antelope" }
+            ],
+            "correctAnswer": "cheetah"
+        },
+        {
+            "id": 12,
+            "text": "What is the capital of Japan?",
+            "choices": [
+                { "id": "tokyo", "text": "Tokyo" },
+                { "id": "osaka", "text": "Osaka" },
+                { "id": "kyoto", "text": "Kyoto" }
+            ],
+            "correctAnswer": "tokyo"
+        },
+        {
+            "id": 13,
+            "text": "How many bones are in the human body?",
+            "choices": [
+                { "id": "206", "text": "206" },
+                { "id": "208", "text": "208" },
+                { "id": "210", "text": "210" }
+            ],
+            "correctAnswer": "206"
+        },
+        {
+            "id": 14,
+            "text": "What is the most spoken language in the world?",
+            "choices": [
+                { "id": "chinese", "text": "Chinese (Mandarin)" },
+                { "id": "english", "text": "English" },
+                { "id": "spanish", "text": "Spanish" }
+            ],
+            "correctAnswer": "chinese"
+        },
+        {
+            "id": 15,
+            "text": "What is the main ingredient in guacamole?",
+            "choices": [
+                { "id": "avocado", "text": "Avocado" },
+                { "id": "tomato", "text": "Tomato" },
+                { "id": "onion", "text": "Onion" }
+            ],
+            "correctAnswer": "avocado"
+        }
+    ]
+}

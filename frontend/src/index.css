@@ -1,13 +1,15 @@
-*{
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-a{
-  text-decoration: none;
+a {
+    text-decoration: none;
 }
 
-body{
-  background-color: #F4F9FD;
+body {
+    min-width: 320px;
+    min-height: 100vh;
+    background-color: #f4f9fd;
 }
