@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import "./hero.css";
 import GetStartedButton from "./GetStartedButton.jsx";
+import img1 from "../public/smiling-happy-indian-student-with-backpack-pointing-his-finger-wall 1.png"
+import img2 from "../public/picture-background.svg"
 function Hero({openModal}){
     
     return(
@@ -11,8 +13,8 @@ function Hero({openModal}){
                 <GetStartedButton onClick={openModal}/>
             </div>
             <div className="picture-container">
-                <img src=".\public\smiling-happy-indian-student-with-backpack-pointing-his-finger-wall 1.png" className="picture"></img>
-                <img src=".\public\picture-background.svg" className="picture-background"></img>
+                <img src={img1} className="picture"></img>
+                <img src={img2} className="picture-background"></img>
 
             </div>
        </div>
