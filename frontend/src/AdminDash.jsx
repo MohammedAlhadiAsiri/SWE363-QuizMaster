@@ -4,8 +4,13 @@ import "./AdminDash.css";
 
 function AdminDash() {
     const navigate = useNavigate();
-    const [students, setStudents] = useState(["Faisal", "Nawaf", "Turkey", "khalid", "mohammed"]);
-    const [quizzes, setQuizzes] = useState([
+    const [students, setStudents] = useState([
+        { id: 1, name: "Faisal", email: "faisal@example.com", password: "password123" },
+        { id: 2, name: "Nawaf", email: "nawaf@example.com", password: "password123" },
+        { id: 3, name: "Turkey", email: "turkey@example.com", password: "password123" },
+        { id: 4, name: "Khalid", email: "khalid@example.com", password: "password123" },
+        { id: 5, name: "Mohammed", email: "mohammed@example.com", password: "password123" },
+    ]);    const [quizzes, setQuizzes] = useState([
         { name: "HTML", isActive: true },
         { name: "CSS", isActive: true },
         { name: "JavaScript", isActive: false },
@@ -45,8 +50,8 @@ function AdminDash() {
         <h2 style={{ color: '#2196f3', marginRight:"auto", padding:"10px" }}>Students info</h2>
         {students.map((student, index)=>
         <div className="stuDev" kay={index}>
-            <sapn className="studentsList">{student}</sapn>
-            <button style={{backgroundColor: "gray" }}>Edit</button>
+            <sapn className="studentsList">{student.name}</sapn>
+            <button style={{backgroundColor: "gray" }} onClick={() => navigate("/EditStudent")} >Edit</button>
             <button style={{ backgroundColor: "red" }} onClick={() => deleteStudent(index)} >
                 Delete
                 </button>
