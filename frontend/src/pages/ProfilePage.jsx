@@ -31,7 +31,7 @@ function ProfilePage() {
             {/* Sidebar */}
             <div className="sidebar">
                 <div className="userInfo">
-                    <h2 className="userName">John Doe</h2>
+                    <h2 className="userName">Mohammed</h2>
                     <p className="userRole">Maker</p>
                 </div>
                 <div className="navButtons">
@@ -65,7 +65,7 @@ function ProfilePage() {
                         <input
                             type="email"
                             id="email"
-                            value="johndoe@example.com"
+                            value="mohammed@example.com"
                             readOnly
                             className="inputField"
                         />
