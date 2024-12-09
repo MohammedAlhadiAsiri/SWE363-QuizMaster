@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import QuestionCard from '../Create/QuestionCard';
-import QuestionTypeModal from '../Create/QuestionTypeModal';
-import DifficultyModal from '../Create/DifficultyModal';
-import QuestionsList from '../Create/QuestionsList';
+import QuestionCard from './QuizMaker/Create/QuestionCard';
+import QuestionTypeModal from './QuizMaker/Create/QuestionTypeModal';
+import DifficultyModal from './QuizMaker/Create/DifficultyModal';
+import QuestionsList from './QuizMaker/Create/QuestionsList';
 import { useNavigate } from 'react-router-dom';
 
 // Dummy quiz data for now

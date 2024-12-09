@@ -9,7 +9,7 @@ import QuizContainerMakerPage from "./pages/QuizContainerMakerPage"
 import QuizTakerAttmptsPage from "./pages/QuizTakerAttmptsPage"
 import ProfilePage from "./pages/ProfilePage"
 import AdminDash from "./AdminDash.jsx";
-import EditQuizAdmin from "./QuizMaker/Edit/EditQuizAdmin.jsx"
+import EditQuizAdmin from "./EditQuizAdmin.jsx"
 const App = () => {
     return (
             <Routes>
