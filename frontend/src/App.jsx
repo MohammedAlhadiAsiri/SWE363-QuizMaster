@@ -13,9 +13,6 @@ import EditQuizPage from "./QuizMaker/Edit/EditQuizPage";
 import QuizContainerMakerPage from "./pages/QuizContainerMakerPage";
 import QuizTakerAttmptsPage from "./pages/QuizTakerAttmptsPage";
 import ProfilePage from "./pages/ProfilePage";
-import Quistions from "./pages/Questions";
-import Quizzes from "./pages/Quizzes";
-import Filter from "./pages/Filter";
 
 const App = () => {
     return (
@@ -38,9 +35,6 @@ const App = () => {
                 element={<QuizTakerAttmptsPage />}
             />
             <Route path="/profile" element={<ProfilePage />} />
-            <Route path="/questions" element={<Quistions />} />
-            <Route path="/quizzes" element={<Quizzes />} />
-            <Route path="/filter" element={<Filter />} />
         </Routes>
     );
 };
