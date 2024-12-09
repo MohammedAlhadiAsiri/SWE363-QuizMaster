@@ -1,0 +1,44 @@
+.end {
+    height: 100px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    border-bottom-color: rgb(228, 228, 228);
+}
+.end_color {
+    /* Frame 65 */
+
+    padding: 15px 100px;
+    margin-top: 14px;
+    background: rgba(59, 94, 115, 0.33);
+    border-radius: 55px;
+    margin-bottom: 25px;
+    /* End */
+
+    font-family: "Outfit";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+
+    text-transform: capitalize;
+
+    color: #ffffff;
+}
+
+.line2 {
+    /* Line 12 */
+    margin-bottom: 5px;
+    position: relative;
+    width: 95%;
+    border: 4px solid #2baffc;
+    border-radius: 8px;
+    margin-top: -4px;
+}

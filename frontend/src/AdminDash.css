@@ -1,4 +1,4 @@
-.main{
+.main {
     background-color: white;
     content: " ";
     width: 100%;
@@ -6,9 +6,9 @@
     position: fixed;
     z-index: 1;
     top: 0;
-    left: 0;    
+    left: 0;
 }
-.header{
+.header {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 
     width: 100%;
@@ -20,26 +20,26 @@
     text-align: center;
     color: hsl(207, 90%, 64%);
     background-color: white;
-    flex: 1  
+    flex: 1;
 }
-.sideBar{
+.sideBar {
     font-size: 15px;
     border-radius: 10px;
     width: 150px;
     background-color: lightgray;
     color: white;
     padding: 15px;
-    height: 100vh; 
-    position: fixed; 
+    height: 100vh;
+    position: fixed;
     top: 0;
     left: 0;
 }
 
-.sidebar-header{
+.sidebar-header {
     color: #2196f3;
 }
 
-.students{
+.students {
     padding: 30px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -56,21 +56,19 @@
     overflow-y: auto; /* Enable vertical scrolling */
 }
 
-.studentsList{
-    float:left;
+.studentsList {
+    float: left;
     color: black;
     font-size: 20px;
     height: 50%;
     padding: 5px;
 }
 
-button{
+button {
     float: right;
     margin: 5px;
-    color:aliceblue   
 }
 .toggle-button {
-
     border-radius: 30px;
     border: none;
     cursor: pointer;
@@ -90,7 +88,7 @@ button:hover {
     opacity: 0.9; /* Add slight hover effect */
 }
 
-.stuDev{
+.stuDev {
     background-color: lightgray;
     margin-bottom: 10px;
     border-radius: 5px;
@@ -99,7 +97,7 @@ button:hover {
     height: 50px;
 }
 
-  button {
+button {
     border-radius: 8px;
     border: 1px solid transparent;
     padding: 0.6em 1.2em;
@@ -107,10 +105,4 @@ button:hover {
     font-weight: 500;
     cursor: pointer;
     transition: border-color 0.25s;
-  }
-
-
-
-  
-
-  
+}

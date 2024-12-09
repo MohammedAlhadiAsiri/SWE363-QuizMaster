@@ -1,0 +1,107 @@
+.question_main {
+    max-width: 1302px;
+    min-height: 650px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 30px;
+    margin: auto;
+    margin-top: 60px;
+    background-color: aqua;
+    min-height: 100vh;
+}
+
+.question_title {
+    width: 100%;
+    height: 100px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    /* World Geography */
+    font-family: "Outfit";
+    font-style: normal;
+    font-weight: 600;
+    font-size: 40px;
+    color: #2baffc;
+    margin: 0 0 20px 0;
+}
+.question {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 85px;
+}
+.question_number {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+.question_number_text {
+    /* Question 1 */
+
+    font-family: "Outfit";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 25px;
+
+    color: #9d9d9d;
+}
+.question_text {
+    /* What is the longest river in the world? */
+
+    font-family: "Outfit";
+    font-style: normal;
+    font-weight: 600;
+    font-size: 32px;
+    color: #000000;
+    align-self: flex-start;
+}
+
+.field {
+    border-style: none;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    column-gap: 16px;
+    margin-top: 15px;
+    row-gap: 40px;
+    width: 1048px;
+}
+.field_choise {
+    /* Frame 65 */
+    cursor: pointer;
+
+    min-height: 58px;
+    background: #f3f3f3;
+    border: 1px solid #2baffc;
+    border-radius: 100px;
+    display: flex;
+    align-items: center;
+    padding: auto;
+    /* Amazon river */
+
+    font-family: "Outfit";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 25px;
+    text-transform: capitalize;
+    color: #2baffc;
+}
+
+.field_choise_text {
+    cursor: pointer;
+    width: 100%;
+    justify-self: center;
+    margin-right: 13px;
+}
+
+.selected {
+    background: #2baffc;
+    border: 1px solid #9d9d9d;
+    color: #f3f3f3;
+}

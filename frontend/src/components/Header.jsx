@@ -1,17 +1,17 @@
-import "../style.css";
+import style from "../styles/header-style.module.css";
 
 const Header = () => {
     return (
         <>
-            <header className="header">
-                <div className="left-section">
-                    <p className="header-logo">QuizMaster</p>
+            <header className={style.header_quiz}>
+                <div className={style.left_section}>
+                    <p className={style.header_logo}>QuizMaster</p>
                 </div>
-                <div className="right-section">
-                    <button className="right-text">HOME</button>
-                    <button className="right-text">CONTACT US</button>
-                    <button className="login">
-                        <p className="login-text">Login</p>
+                <div className={style.right_section}>
+                    <button className={style.right_text}>HOME</button>
+                    <button className={style.right_text}>CONTACT US</button>
+                    <button className={style.login}>
+                        <p className={style.login_text}>Login</p>
                     </button>
                 </div>
             </header>

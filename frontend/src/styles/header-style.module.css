@@ -1,0 +1,110 @@
+.header_quiz {
+    height: 60px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    background-color: white;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    border-bottom-color: rgb(228, 228, 228);
+}
+
+.left_section {
+    display: flex;
+    align-items: center;
+}
+
+.header_logo {
+    /* QuizMaster */
+
+    margin-left: 60px;
+
+    font-family: "Outfit";
+    font-style: normal;
+    font-weight: 900;
+    font-size: 25px;
+
+    color: #2baffc;
+}
+
+.right_section {
+    padding: 0 10px;
+    min-width: 500px;
+    margin-right: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-shrink: 0;
+}
+
+.login {
+    /* Frame 17 */
+    padding: 10px 45px;
+
+    background: #2baffc;
+    border-radius: 33px;
+
+    /* Centering with Flexbox */
+    display: flex;
+    align-items: center; /* Center vertically */
+    justify-content: center; /* Center horizontally */
+
+    cursor: pointer;
+}
+
+.right_text {
+    font-family: "Outfit";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 23px;
+    color: #2baffc;
+    padding: 10px 15px;
+    cursor: pointer;
+}
+
+.login_text {
+    /* Login */
+    font-family: "Outfit";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 23px;
+    color: #ffffff;
+}
+
+@media (min-width: 751px) and (max-width: 999px) {
+    .right_section {
+        padding: 0 10px;
+        min-width: 380px;
+        margin-right: 40px;
+    }
+    .login {
+        padding: 10px 30px;
+    }
+    .right_text,
+    .login_text {
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 750px) {
+    .right_section {
+        padding: 0 10px;
+        min-width: 270px;
+        margin-right: 25px;
+    }
+    .login {
+        padding: 10px 20px;
+    }
+    .right_text,
+    .login_text {
+        font-size: 12px;
+    }
+}
