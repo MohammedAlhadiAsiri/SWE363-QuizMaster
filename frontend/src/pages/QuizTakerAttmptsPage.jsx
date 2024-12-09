@@ -1,9 +1,9 @@
-//This is QuizMakerPage.jsx
+//This is QuizTakerAttmptsPage.jsx
 import React from 'react'
 import QuizzesContainer from './TakerAttmptsContainer'
 import Navbar from '../Navbar';
 import '../QuizMaker/Dashboard/QuizMakerDashboard.css'
-function QuizMakerPage(){
+function QuizTakerAttmptsPage(){
     return (
         <div className='quizMakerPage'>
             <Navbar />
@@ -11,4 +11,4 @@ function QuizMakerPage(){
         </div>
     );
 }
-export default QuizMakerPage;
+export default QuizTakerAttmptsPage;
