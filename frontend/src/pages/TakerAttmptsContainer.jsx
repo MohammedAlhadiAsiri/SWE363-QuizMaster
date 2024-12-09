@@ -1,14 +1,14 @@
 //This is TakerAttmptsContainer.jsx
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import QuizCard from './TakerQuizCard';
+import TakerQuizCard from './TakerQuizCard';
 import '../QuizMaker/Dashboard/QuizzesContainer.css'
 function TakerAttmptsContainer(){
 
     return (
-        <section className='attempQuizzesContainer'>
+        <section className='quizzesContainer'>
             <div className='navBar'>
-                <p className='attemquizzes'>Attempted Quizzes</p>
+                <p className='quizzes'>Attempted Quizzes</p>
             </div>
             <TakerQuizCard />
         </section>
