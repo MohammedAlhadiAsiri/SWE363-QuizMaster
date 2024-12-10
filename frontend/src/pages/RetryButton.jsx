@@ -6,7 +6,7 @@ function RetryButton(){
     const navigate = useNavigate();
     function handleClick(){
         // retry the quiz
-        navigate('/Quizzes')
+        navigate('/quizzes')
     }
     return <button className='statsButton' onClick={handleClick}>Retry</button>;
 }
