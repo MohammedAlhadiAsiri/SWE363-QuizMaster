@@ -7,6 +7,13 @@ color: #2BAFFC;
     margin: 20px 0;
 }
 
+.pic-button{
+    display: flex;
+    flex-direction: column; 
+    align-items: center;
+    margin-top: 20px;
+}
+
 .picture{   
     position: relative;
     width: 447px;
