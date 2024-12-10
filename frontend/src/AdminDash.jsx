@@ -43,7 +43,7 @@ function AdminDash() {
         <button style={{ width: '100%', padding: '10px', backgroundColor: '#999', color: 'black', border: 'none' }} onClick={() => navigate("/")} >LOG OUT</button>
         </aside>
     <main>
-    <header className="header"> <p>--------------|  Hello, Admin</p></header>
+    <header className="header"> <p>-------------------|  Hello, Admin</p></header>
 
         
     <section className="students">
@@ -66,7 +66,8 @@ function AdminDash() {
                             <span className="studentsList">
                                 {quiz.name}
                             </span>
-                            <button style={{ backgroundColor: "gray" }} onClick={() => navigate("/EditForAdmin")} >Edit</button>
+                            <button style={{ backgroundColor: "gray" }} onClick={() => navigate("/EditForAdmin"
+                                        )} >Edit</button>
                             <button
                                 style={{ backgroundColor: "red" }}
                                 onClick={() => deleteQuiz(index)}

@@ -16,6 +16,10 @@ import ProfilePage from "./pages/ProfilePage";
 import Questions from "./pages/Questions";
 import Filter from "./pages/Filter";
 import Quizzes from "./pages/Quizzes";
+import AdminDash from "./AdminDash";
+import EditStudent from "./EditStudent";
+import EditQuizAdmin from "./EditQuizAdmin";
+
 
 const App = () => {
     return (
@@ -41,6 +45,9 @@ const App = () => {
             <Route path="/quizzes" element={<Quizzes />} />
             <Route path="/questions" element={<Questions />} />
             <Route path="/filter" element={<Filter />} />
+            <Route path="/Admin" element={<AdminDash />} />
+            <Route path="/EditForAdmin" element={<EditQuizAdmin />} />
+            <Route path="/EditStudent" element={<EditStudent />} />
         </Routes>
     );
 };
