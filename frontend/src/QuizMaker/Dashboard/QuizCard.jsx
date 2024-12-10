@@ -1,22 +1,20 @@
-//This is QuizCard.jsx
 import React from 'react';
 import EditButton from './EditButton';
 import StatsButton from './StatsButton';
 import QuizName from './QuizName';
 import './QuizCard.css'
-//temp database
-const quizzesNames = ['HTML Practice', 'World Geo', 'CSS Practice'];
 
-function QuizCard(){
+function QuizCard({ quizzes }) {
     return (
         // Map through quizzes and display each quiz card
-        quizzesNames.map((quiz) => <div className='quizCard'>
-            <StatsButton />
-            <QuizName name={quiz}/>
-            <EditButton />
-            
-        </div>)
-        
+        quizzes.map((quiz, index) => (
+            <div key={index} className='quizCard'>
+                <StatsButton />
+                <QuizName name={quiz.name}/>
+                <EditButton />
+            </div>
+        ))
     );
 }
+
 export default QuizCard;

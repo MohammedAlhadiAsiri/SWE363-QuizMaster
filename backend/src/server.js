@@ -122,6 +122,29 @@ app.post('/create-quiz', async (req, res) => {
     res.status(500).json({ message: 'Internal server error' });
   }
 });
+// Get user's quizzes route
+app.get('/quiz-maker-dashboard', async (req, res) => {
+  try {
+    // Verify the token
+    const token = req.headers.authorization?.split(' ')[1];
+    if (!token) {
+      return res.status(401).json({ message: 'No token provided' });
+    }
+
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    const userEmail = decoded.email;
+
+    const quizzesCollection = database.collection('quizzes');
+    
+    // Find quizzes created by the user
+    const userQuizzes = await quizzesCollection.find({ userEmail }).toArray();
+
+    res.status(200).json(userQuizzes);
+  } catch (error) {
+    console.error('Error fetching user quizzes:', error);
+    res.status(500).json({ message: 'Internal server error' });
+  }
+});
 
 // Start the server
 const PORT = process.env.PORT || 5000;
