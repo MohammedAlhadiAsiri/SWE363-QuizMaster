@@ -31,22 +31,7 @@ async function connectToDatabase() {
 
 connectToDatabase();
 
-// Middleware to verify JWT token
-function verifyToken(req, res, next) {
-  const token = req.header('Authorization')?.split(' ')[1]; // Get token from header
 
-  if (!token) {
-    return res.status(403).json({ message: "Access denied" });
-  }
-
-  try {
-    const decoded = jwt.verify(token, process.env.JWT_SECRET);
-    req.user = decoded; // Store the user information in the request object
-    next();
-  } catch (error) {
-    res.status(400).json({ message: "Invalid token" });
-  }
-}
 
 // Login route
 app.post("/login", async (req, res) => {
@@ -59,14 +44,18 @@ app.post("/login", async (req, res) => {
     const user = await usersCollection.findOne({ email, password });
 
     if (user) {
-      // Commented out JWT logic since you're not using JWT
-      // const token = jwt.sign({ id: user._id, email: user.email }, process.env.JWT_SECRET, { expiresIn: '1h' });
-
+      // Create a JWT token with user email and role
+      const token = jwt.sign(
+        { email: user.email, role: user.role }, 
+        process.env.JWT_SECRET, 
+        { expiresIn: '1h' }
+      );
+      
       res.status(200).json({
         message: "Login successful",
         role: user.role,
-        // Remove token field as it's not being sent now
-        // token, // Removed token from response
+        token: token,
+        email: user.email
       });
     } else {
       res.status(401).json({ message: "Invalid email or password" });
@@ -98,9 +87,21 @@ app.post("/signup", async (req, res) => {
 
     // Insert the new user into the database
     const newUser = { firstName, lastName, email, password, role };
-    await usersCollection.insertOne(newUser);
+    const insertResult = await usersCollection.insertOne(newUser);
 
-    res.status(201).json({ message: 'User registered successfully', role });
+    // Create a JWT token with user email and role
+    const token = jwt.sign(
+      { email: email, role: role }, 
+      process.env.JWT_SECRET, 
+      { expiresIn: '1h' }
+    );
+
+    res.status(201).json({ 
+      message: 'User registered successfully', 
+      role, 
+      token,
+      email 
+    });
   } catch (error) {
     console.error('Error connecting to MongoDB:', error);
     res.status(500).json({ message: 'Internal server error' });
@@ -108,16 +109,12 @@ app.post("/signup", async (req, res) => {
 });
 
 // Create quiz route
-app.post('/create-quiz', verifyToken, async (req, res) => {
+app.post('/create-quiz', async (req, res) => {
   const quizData = req.body;
-
-  // Add the creatorID (from the JWT token) to the quiz data
-  const creatorID = req.user.id;  // This is the user id from the JWT token
-  const quizWithCreator = { ...quizData, creatorID };
 
   try {
     const quizzesCollection = database.collection('quizzes');
-    await quizzesCollection.insertOne(quizWithCreator);
+    await quizzesCollection.insertOne(quizData);
 
     res.status(201).json({ message: 'Quiz created successfully' });
   } catch (error) {

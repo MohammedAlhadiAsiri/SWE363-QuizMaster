@@ -77,52 +77,50 @@ function CreateQuizPage() {
 
     const handlePublishClick = async () => {
         const validationError = validateQuizData();
-    if (validationError) {
-        alert(validationError);
-        return;
-    }
-
-    const quizData = {
-        name: quizName,
-        difficulty,
-        numberOfQuestions: questionCards.length,
-        questions: questionCards.map((card, index) => ({
-            questionText: card.questionText,
-            answers: card.answers,
-            correctAnswer: document.querySelector(`input[name=correctAns${index}]:checked`)?.value,
-            type: card.type,
-        })),
-    };
-
-    const token = localStorage.getItem('jwtToken'); // Retrieve token from local storage
-
-    if (!token) {
-        alert('You are not logged in.');
-        return;
-    }
-
-    try {
-        const response = await fetch('http://localhost:5000/create-quiz', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${token}`,
-            },
-            body: JSON.stringify(quizData),
-        });
-
-        if (response.ok) {
-            const result = await response.json();
-            console.log('Quiz created:', result);
-            setShowPublishedModal(true);
-        } else {
-            const error = await response.json();
-            alert(`Failed to create quiz: ${error.message}`);
+        if (validationError) {
+            alert(validationError);
+            return;
         }
-    } catch (error) {
-        console.error('Error creating quiz:', error);
-        alert('An error occurred while creating the quiz.');
-    }
+    
+        // Get the user's email from localStorage
+        const userEmail = localStorage.getItem('userEmail');
+        const token = localStorage.getItem('token');
+    
+        const quizData = {
+            name: quizName,
+            difficulty,
+            numberOfQuestions: questionCards.length,
+            userEmail, // Add user's email to quiz data
+            questions: questionCards.map((card, index) => ({
+                questionText: card.questionText,
+                answers: card.answers,
+                correctAnswer: document.querySelector(`input[name=correctAns${index}]:checked`)?.value,
+                type: card.type,
+            })),
+        };
+    
+        try {
+            const response = await fetch('http://localhost:5000/create-quiz', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`,
+                },
+                body: JSON.stringify(quizData),
+            });
+    
+            if (response.ok) {
+                const result = await response.json();
+                console.log('Quiz created:', result);
+                setShowPublishedModal(true);
+            } else {
+                const error = await response.json();
+                alert(`Failed to create quiz: ${error.message}`);
+            }
+        } catch (error) {
+            console.error('Error creating quiz:', error);
+            alert('An error occurred while creating the quiz.');
+        }
         console.log(quizData);
         setShowPublishedModal(true);
     };

@@ -9,32 +9,37 @@ function SignInModal({ onClose, openModal }) {
     const navigate = useNavigate();
 
     const handleSubmit = async (e) => {
-        e.preventDefault();
-
-        try {
-            const response = await axios.post("http://localhost:5000/login", {
-                email,
-                password,
-            });
-
-            if (response.status === 200) {
-                const { role } = response.data;
-                // Redirect based on user role
-                if (role === "quizMaker") {
-                    navigate("/quiz-maker-dashboard");
-                } else if (role === "quizTaker") {
-                    navigate("/quiz-taker-dashboard");
-                }
-            }
-        } catch (error) {
-            if (error.response && error.response.status === 401) {
-                alert(`Invalid email or password` + error.response);
-            } else {
-                alert("Something went wrong. Please try again later.");
-                console.error(error);
-            }
-        }
-    };
+      e.preventDefault();
+  
+      try {
+          const response = await axios.post("http://localhost:5000/login", {
+              email,
+              password,
+          });
+  
+          if (response.status === 200) {
+              const { role, token, email: userEmail } = response.data;
+              
+              // Store token and email in localStorage
+              localStorage.setItem('token', token);
+              localStorage.setItem('userEmail', userEmail);
+  
+              // Redirect based on user role
+              if (role === "quizMaker") {
+                  navigate("/quiz-maker-dashboard");
+              } else if (role === "quizTaker") {
+                  navigate("/quiz-taker-dashboard");
+              }
+          }
+      } catch (error) {
+          if (error.response && error.response.status === 401) {
+              alert(`Invalid email or password`);
+          } else {
+              alert("Something went wrong. Please try again later.");
+              console.error(error);
+          }
+      }
+  };
 
     return (
         <div className="modal-overlay" onClick={onClose}>

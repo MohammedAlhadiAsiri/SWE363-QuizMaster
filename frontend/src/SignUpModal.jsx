@@ -36,7 +36,12 @@ function SignUpModal({ onClose, openModal }) {
             );
 
             if (response.status === 201) {
-                const { role } = response.data;
+                const { role, token, email } = response.data;
+                
+                // Store token and email in localStorage
+                localStorage.setItem('token', token);
+                localStorage.setItem('userEmail', email);
+
                 // Redirect based on user role
                 if (role === "quizMaker") {
                     navigate("/quiz-maker-dashboard");
