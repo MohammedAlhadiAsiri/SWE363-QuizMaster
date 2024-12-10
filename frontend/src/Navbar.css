@@ -54,7 +54,7 @@
 
 @media (max-width: 768px) {
     /* Header adjustments */
-    .header {
+    .main-header {
         width:100%;
         flex-direction: row;
         padding: 15px 10px;

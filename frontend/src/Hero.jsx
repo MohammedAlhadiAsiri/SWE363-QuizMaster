@@ -6,7 +6,7 @@ import img2 from "../public/picture-background.svg";
 function Hero({ openModal }) {
     return (
         <div className="container">
-            <div>
+            <div className="pic-button">
                 <h1>Test Your Knowledge</h1>
                 <h1>-Anytime, Anywhere-</h1>
                 <GetStartedButton onClick={openModal} />
