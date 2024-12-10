@@ -18,7 +18,11 @@ function SignInModal({ onClose, openModal }) {
       });
 
       if (response.status === 200) {
-        const { role } = response.data;
+        const { role, token } = response.data;
+
+        // Store the JWT token in localStorage
+        localStorage.setItem('jwtToken', token);
+        
         // Redirect based on user role
         if (role === 'quizMaker') {
           navigate('/quiz-maker-dashboard');

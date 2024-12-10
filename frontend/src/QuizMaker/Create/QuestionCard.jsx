@@ -2,18 +2,15 @@ import React from 'react';
 import './QuestionCard.css';
 
 function QuestionCard({ type, index, questionText, answers, onUpdate }) {
-    // Update the question text
     const handleQuestionTextChange = (e) => {
         onUpdate({ questionText: e.target.value, type, answers });
     };
 
-    // Update the specific answer
     const handleAnswerChange = (answerIndex, value) => {
         const updatedAnswers = answers.map((answer, i) => (i === answerIndex ? value : answer));
         onUpdate({ questionText, type, answers: updatedAnswers });
     };
 
-    // Render multiple-choice question answers
     const mcq = (
         <div className='answersContainer'>
             {answers.map((answer, i) => (
@@ -25,13 +22,17 @@ function QuestionCard({ type, index, questionText, answers, onUpdate }) {
                         value={answer}
                         onChange={(e) => handleAnswerChange(i, e.target.value)}
                     />
-                    <input type='radio' name={`correctAns${index}`} className='radio' />
+                    <input
+                        type='radio'
+                        name={`correctAns${index}`}
+                        className='radio'
+                        value={answer} // Fix: Set the value to the corresponding answer
+                    />
                 </div>
             ))}
         </div>
     );
 
-    // Render true/false options
     const tf = (
         <div className='answersContainer'>
             {['True', 'False'].map((option, i) => (
@@ -42,7 +43,12 @@ function QuestionCard({ type, index, questionText, answers, onUpdate }) {
                         value={option}
                         readOnly
                     />
-                    <input type='radio' name={`correctAns${index}`} className='radio' />
+                    <input
+                        type='radio'
+                        name={`correctAns${index}`}
+                        className='radio'
+                        value={option} // Fix: Set the value to "True" or "False"
+                    />
                 </div>
             ))}
         </div>

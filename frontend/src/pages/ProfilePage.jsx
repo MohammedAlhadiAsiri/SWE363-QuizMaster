@@ -1,63 +1,87 @@
-// ProfilePage.jsx
-import React, { useState } from 'react';
-import './ProfilePage.css';
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";  // Import useNavigate
+import "./ProfilePage.css";
 
 function ProfilePage() {
-    const [password, setPassword] = useState("password123"); // Example password
+    const [currentPassword, setCurrentPassword] = useState("password123");
+    const [newPassword, setNewPassword] = useState("");
     const [showPassword, setShowPassword] = useState(false);
+    const [passwordValid, setPasswordValid] = useState(false);
+    const [showChangePassword, setShowChangePassword] = useState(false);
 
-    const handlePasswordChange = (event) => {
-        setPassword(event.target.value);
+    const navigate = useNavigate();  // Initialize useNavigate
+
+    const handleNewPasswordChange = (event) => {
+        const value = event.target.value;
+        setNewPassword(value);
+
+        // Validate password: at least one number, one uppercase letter, no special characters
+        const passwordPattern = /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)[A-Za-z\d]{8,}$/;
+        setPasswordValid(passwordPattern.test(value));
     };
 
     const toggleShowPassword = () => {
         setShowPassword(!showPassword);
     };
 
-    const handleSaveChanges = () => {
-        alert("Changes saved!"); // Replace with actual save logic
+    const handleSavePassword = () => {
+        if (passwordValid) {
+            alert("Password changed successfully!");
+            setCurrentPassword(newPassword);
+            setNewPassword("");
+            setShowChangePassword(false);
+        } else {
+            alert("Password does not meet requirements.");
+        }
     };
 
-    const handleDeleteAccount = () => {
-        alert("Account deleted!"); // Replace with delete logic
-    };
-
+    // Handle log out
     const handleLogout = () => {
-        alert("Logged out!"); // Replace with logout logic
+        alert("Logged out!");
+        navigate("/");  // Redirect to HomePage after the alert
+    };
+
+    // Handle delete account
+    const handleDeleteAccount = () => {
+        const confirmation = window.confirm("Are you sure you want to delete your account? This action cannot be undone.");
+        if (confirmation) {
+            alert("Account deleted!");
+            navigate("/");  // Redirect to HomePage after account deletion
+        } else {
+            alert("Account deletion canceled.");
+        }
     };
 
     return (
         <div className="profilePage">
-            {/* Sidebar */}
             <div className="sidebar">
                 <div className="userInfo">
                     <h2 className="userName">Mohammed</h2>
                     <p className="userRole">Maker</p>
                 </div>
                 <div className="navButtons">
-                    <button className="navButton">Home</button>
-                    <button className="navButton">About</button>
-                    <button className="navButton">Contact Us</button>
+                    <Link to="/" className="navButton">Home</Link>
+                    <Link to="/AboutUs" className="navButton">About</Link>
+                    <Link to="/AboutUs" className="navButton">Contact Us</Link>
                 </div>
                 <div className="actionButtons">
+                    {/* Log out button */}
                     <button className="logoutButton" onClick={handleLogout}>
                         Log Out
                     </button>
+                    {/* Delete account button */}
                     <button className="deleteButton" onClick={handleDeleteAccount}>
                         Delete Account
                     </button>
                 </div>
             </div>
 
-            {/* Main Section */}
             <div className="mainSection">
-                {/* Header */}
                 <header className="header">
                     <h1 className="websiteName">QuizMaster</h1>
                     <span className="pageTitle">Account</span>
                 </header>
 
-                {/* Body */}
                 <div className="bodyContent">
                     <h2>Profile Information</h2>
                     <div className="formGroup">
@@ -71,13 +95,13 @@ function ProfilePage() {
                         />
                     </div>
                     <div className="formGroup">
-                        <label htmlFor="password">Password</label>
+                        <label htmlFor="currentPassword">Current Password</label>
                         <div className="passwordContainer">
                             <input
                                 type={showPassword ? "text" : "password"}
-                                id="password"
-                                value={password}
-                                onChange={handlePasswordChange}
+                                id="currentPassword"
+                                value={currentPassword}
+                                readOnly
                                 className="inputField"
                             />
                             <button
@@ -89,9 +113,47 @@ function ProfilePage() {
                             </button>
                         </div>
                     </div>
-                    <button className="saveButton" onClick={handleSaveChanges}>
-                        Save Changes
-                    </button>
+                    {!showChangePassword && (
+                        <button
+                            className="changePasswordButton"
+                            onClick={() => setShowChangePassword(true)}
+                        >
+                            Change Password
+                        </button>
+                    )}
+                    {showChangePassword && (
+                        <div>
+                            <div className="formGroup">
+                                <label htmlFor="newPassword">New Password</label>
+                                <input
+                                    type="password"
+                                    id="newPassword"
+                                    value={newPassword}
+                                    onChange={handleNewPasswordChange}
+                                    className="inputField"
+                                    placeholder="Enter new password"
+                                />
+                                <small className="passwordHint">
+                                    Password must contain at least one number, one uppercase letter, 
+                                    and be at least 8 characters long. No special characters allowed.
+                                </small>
+                                <span
+                                    className={`passwordStatus ${
+                                        passwordValid ? "valid" : "invalid"
+                                    }`}
+                                >
+                                    {passwordValid ? "✓ Password is valid" : "✗ Invalid password"}
+                                </span>
+                            </div>
+                            <button
+                                className="saveButton"
+                                onClick={handleSavePassword}
+                                disabled={!passwordValid}
+                            >
+                                Save Password
+                            </button>
+                        </div>
+                    )}
                 </div>
             </div>
         </div>
