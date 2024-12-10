@@ -13,7 +13,7 @@ app.use(bodyParser.json());
 const username = process.env.MONGO_USERNAME;
 const password = process.env.MONGO_PASSWORD;
 
-const uri = `mongodb+srv://${username}:${password}@cluster0.jnidl.mongodb.net/?retryWrites=true&w=majority`;
+const uri = process.env.MONGODB_URI
 const client = new MongoClient(uri);
 let database;
 
