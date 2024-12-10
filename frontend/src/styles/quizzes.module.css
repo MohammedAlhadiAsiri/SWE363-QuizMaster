@@ -1,3 +1,11 @@
+.quiz_main_container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding-top: 60px;
+    padding-bottom: 20px;
+}
 .main_grid {
     max-width: 1302px;
     min-height: 450px;

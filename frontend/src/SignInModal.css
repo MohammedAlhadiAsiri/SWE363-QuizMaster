@@ -34,7 +34,7 @@
 }
 
 .modal-content {
-    background: #FFF;
+    background: #fff;
     border-radius: 20px;
     padding: 40px;
     width: 400px;
@@ -70,12 +70,12 @@
     outline: none;
     background: #ffffff;
     font-family: outfit;
-    width:420px;
+    width: 420px;
 }
 
 .sign-in-button {
-    background: #2BAFFC;
-    color: #FFF;
+    background: #2baffc;
+    color: #fff;
     padding: 10px 0;
     border: none;
     border-radius: 33px;
@@ -97,7 +97,7 @@
 }
 
 .sign-up-text a {
-    color: #2BAFFC;
+    color: #2baffc;
     text-decoration: none;
     font-weight: 500;
 }
