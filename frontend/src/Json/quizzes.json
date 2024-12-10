@@ -40,5 +40,33 @@
         "level": "Easy",
         "title": "Database Basics",
         "instructor": "Dr. Julia"
+    },
+    {
+        "id": 7,
+        "type": "Multiple_Choice",
+        "level": "Easy",
+        "title": "Database Basics",
+        "instructor": "Dr. Julia"
+    },
+    {
+        "id": 8,
+        "type": "Multiple_Choice",
+        "level": "Easy",
+        "title": "Database Basics",
+        "instructor": "Dr. Julia"
+    },
+    {
+        "id": 9,
+        "type": "Multiple_Choice",
+        "level": "Easy",
+        "title": "Database Basics",
+        "instructor": "Dr. Julia"
+    },
+    {
+        "id": 10,
+        "type": "Multiple_Choice",
+        "level": "Easy",
+        "title": "Database Basics",
+        "instructor": "Dr. Julia"
     }
 ]
