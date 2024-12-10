@@ -1,8 +1,9 @@
-require("dotenv").config();
-const express = require("express");
-const cors = require("cors");
-const bodyParser = require("body-parser");
-const { MongoClient } = require("mongodb");
+require('dotenv').config();
+const express = require('express');
+const cors = require('cors');
+const bodyParser = require('body-parser');
+const { MongoClient } = require('mongodb');
+const jwt = require('jsonwebtoken'); // JWT handling
 
 const app = express();
 app.use(cors());
@@ -15,14 +16,28 @@ const password = process.env.MONGO_PASSWORD;
 const uri = `mongodb+srv://${username}:${password}@cluster0.jnidl.mongodb.net/?retryWrites=true&w=majority`;
 const client = new MongoClient(uri);
 
+// Connect to MongoDB once
+async function connectToDatabase() {
+  try {
+    await client.connect();
+    database = client.db('QuizMaster');
+    console.log('Connected to MongoDB');
+  } catch (error) {
+    console.error('Error connecting to MongoDB:', error);
+    process.exit(1); // Exit process on connection failure
+  }
+}
+
+connectToDatabase();
+
+
 // Login route
 app.post("/login", async (req, res) => {
     const { email, password } = req.body;
 
-    try {
-        await client.connect();
-        const database = client.db("QuizMaster");
-        const usersCollection = database.collection("users");
+  try {
+    const database = client.db('QuizMaster');
+    const usersCollection = database.collection('users');
 
         // Find the user by email and password
         const user = await usersCollection.findOne({ email, password });
@@ -51,10 +66,9 @@ app.post("/signup", async (req, res) => {
         return res.status(400).json({ message: "All fields are required" });
     }
 
-    try {
-        await client.connect();
-        const database = client.db("QuizMaster");
-        const usersCollection = database.collection("users");
+  try {
+    const database = client.db('QuizMaster');
+    const usersCollection = database.collection('users');
 
         // Check if the email already exists
         const existingUser = await usersCollection.findOne({ email });
@@ -69,14 +83,29 @@ app.post("/signup", async (req, res) => {
         const newUser = { firstName, lastName, email, password, role };
         await usersCollection.insertOne(newUser);
 
-        // Respond with the new user's role
-        res.status(201).json({ message: "User registered successfully", role });
-    } catch (error) {
-        console.error("Error connecting to MongoDB:", error);
-        res.status(500).json({ message: "Internal server error" });
-    } finally {
-        await client.close();
-    }
+    // Respond with the new user's role
+    res.status(201).json({ message: 'User registered successfully', role });
+  } catch (error) {
+    console.error('Error connecting to MongoDB:', error);
+    res.status(500).json({ message: 'Internal server error' });
+  } finally {
+    await client.close();
+  }
+});
+
+// Create quiz route
+app.post('/create-quiz', async (req, res) => {
+  const quizData = req.body;
+
+  try {
+    const quizzesCollection = database.collection('quizzes');
+    await quizzesCollection.insertOne(quizData);
+
+    res.status(201).json({ message: 'Quiz created successfully' });
+  } catch (error) {
+    console.error('Error inserting quiz:', error);
+    res.status(500).json({ message: 'Internal server error' });
+  }
 });
 
 // Start the server

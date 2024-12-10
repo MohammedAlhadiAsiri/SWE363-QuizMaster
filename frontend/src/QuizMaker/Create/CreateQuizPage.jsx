@@ -9,16 +9,19 @@ import { useNavigate } from 'react-router-dom';
 
 function CreateQuizPage() {
     const navigate = useNavigate();
-    // initial modal states
+
+    // State for modal visibility
     const [openQuestionTypeModal, setOpenQuestionTypeModal] = useState(false);
     const [openDifficultyModal, setOpenDifficultyModal] = useState(false);
-    const [showPublishedModal, setShowPublishedModal] = useState(false); 
-    //initial quiz name and questions cards states
+    const [showPublishedModal, setShowPublishedModal] = useState(false);
+
+    // State for quiz information
     const [quizName, setQuizName] = useState('');
     const [questionCards, setQuestionCards] = useState([]);
+    const [difficulty, setDifficulty] = useState('easy'); // Default difficulty
 
     useEffect(() => {
-        setOpenDifficultyModal(true);
+        setOpenDifficultyModal(true); // Show difficulty modal on page load
     }, []);
 
     const handleExitClick = () => {
@@ -26,10 +29,11 @@ function CreateQuizPage() {
     };
 
     const addQuestion = (type) => {
-        setQuestionCards([...questionCards, { type, questionText: '', answers: Array(4).fill('') }]);
+        const initialAnswers = type === 'mcq' ? Array(4).fill('') : ['True', 'False'];
+        setQuestionCards([...questionCards, { type, questionText: '', answers: initialAnswers }]);
         setOpenQuestionTypeModal(false);
     };
-    //
+
     const removeQuestion = (index) => {
         const updatedQuestions = questionCards.filter((_, i) => i !== index);
         setQuestionCards(updatedQuestions);
@@ -41,15 +45,15 @@ function CreateQuizPage() {
         );
         setQuestionCards(updatedQuestions);
     };
-    // Quiz validation before publishing 
+
     const validateQuizData = () => {
         if (!quizName) return "Quiz name is required.";
         if (questionCards.length === 0) return "At least one question is required.";
-    
+
         for (let i = 0; i < questionCards.length; i++) {
             const question = questionCards[i];
             if (!question.questionText) return `Question ${i + 1} must have text.`;
-    
+
             if (question.type === 'mcq') {
                 if (question.answers.some(answer => answer === '')) {
                     return `All answer fields for Question ${i + 1} must be filled.`;
@@ -59,7 +63,7 @@ function CreateQuizPage() {
                     return `A correct answer must be selected for Question ${i + 1}.`;
                 }
             }
-    
+
             if (question.type === 'tf') {
                 const correctAnswerSelected = document.querySelector(`input[name=correctAns${i}]:checked`);
                 if (!correctAnswerSelected) {
@@ -67,31 +71,52 @@ function CreateQuizPage() {
                 }
             }
         }
-    
-        return null; 
+
+        return null;
     };
 
-    const handlePublishClick = () => {
+    const handlePublishClick = async () => {
         const validationError = validateQuizData();
         if (validationError) {
             alert(validationError);
             return;
         }
 
-        // For backend phase
         const quizData = {
             name: quizName,
-            questions: questionCards.map((question, index) => ({
-                type: question.type,
-                text: question.questionText,
-                answers: question.answers,
-                correctAnswerIndex: question.answers.findIndex((answer, i) =>
-                    document.querySelector(`input[name=correctAns${index}]:checked`)?.value === answer
-                ),
+            difficulty, // Include selected difficulty
+            numberOfQuestions: questionCards.length, // Number of questions in the quiz
+            questions: questionCards.map((card, index) => ({
+                questionText: card.questionText,
+                answers: card.answers,
+                correctAnswer: document.querySelector(`input[name=correctAns${index}]:checked`)?.value,
+                type: card.type,
             })),
         };
 
-        setShowPublishedModal(true); 
+        try {
+            
+          
+            const response = await fetch('http://localhost:5000/create-quiz', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(quizData),
+            });
+    
+            if (response.ok) {
+                const result = await response.json();
+                console.log('Quiz created:', result);
+                // Show a success message or navigate back to the dashboard
+            } else {
+                const error = await response.json();
+                alert(`Failed to create quiz: ${error.message}`);
+            }
+        } catch (error) {
+            console.error('Error creating quiz:', error);
+            alert('An error occurred while creating the quiz.');
+        }
+        console.log(quizData);
+        setShowPublishedModal(true);
     };
 
     const closePublishedModal = () => {
@@ -136,13 +161,13 @@ function CreateQuizPage() {
                         />
                     ))}
                 </div>
-                <button className='mobileAddQuestionButton' onClick={() => setOpenQuestionTypeModal(true)}>Add Question</button>        
+                <button className='mobileAddQuestionButton' onClick={() => setOpenQuestionTypeModal(true)}>Add Question</button>
                 {openQuestionTypeModal && (
                     <QuestionTypeModal addQuestionProp={addQuestion} openModal={setOpenQuestionTypeModal} />
                 )}
                 
                 {openDifficultyModal && (
-                    <DifficultyModal openModal={setOpenDifficultyModal} />
+                    <DifficultyModal openModal={setOpenDifficultyModal} setDifficulty={setDifficulty} />
                 )}
 
                 {showPublishedModal && <QuizPublishedModal onClose={closePublishedModal} />}
