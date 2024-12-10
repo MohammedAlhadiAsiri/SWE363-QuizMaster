@@ -59,13 +59,14 @@ app.post("/login", async (req, res) => {
     const user = await usersCollection.findOne({ email, password });
 
     if (user) {
-      // Create and sign JWT token
-      const token = jwt.sign({ id: user._id, email: user.email }, process.env.JWT_SECRET, { expiresIn: '1h' });
+      // Commented out JWT logic since you're not using JWT
+      // const token = jwt.sign({ id: user._id, email: user.email }, process.env.JWT_SECRET, { expiresIn: '1h' });
 
       res.status(200).json({
         message: "Login successful",
         role: user.role,
-        token, // Send token to the frontend
+        // Remove token field as it's not being sent now
+        // token, // Removed token from response
       });
     } else {
       res.status(401).json({ message: "Invalid email or password" });
@@ -75,6 +76,7 @@ app.post("/login", async (req, res) => {
     res.status(500).json({ message: "Internal server error" });
   }
 });
+
 
 // Sign Up route
 app.post("/signup", async (req, res) => {
