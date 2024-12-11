@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import QuizCard from './QuizCard';
 import './QuizzesContainer.css'
-
+import { API_BASE_URL } from '../../config';
 function QuizzesContainer() {
     const navigate = useNavigate();
     const [quizzes, setQuizzes] = useState([]);

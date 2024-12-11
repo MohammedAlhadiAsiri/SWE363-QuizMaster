@@ -5,7 +5,7 @@ import QuizNameStats from './QuizNameStats';
 import QuizInfo from "./QuizInfo";
 import QuizStats from "./QuizStats";
 import './StatsPage.css'
-
+import { API_BASE_URL } from "../../config";
 function StatsPage() {
     const [quizData, setQuizData] = useState(null);
     const [error, setError] = useState(null);

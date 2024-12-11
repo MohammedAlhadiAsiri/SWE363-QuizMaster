@@ -6,7 +6,7 @@ import QuestionsList from './QuestionsList';
 import QuizPublishedModal from './QuizPublishedModal';
 import './CreateQuizPage.css';
 import { useNavigate } from 'react-router-dom';
-
+import { API_BASE_URL } from '../../config';
 function CreateQuizPage() {
     const navigate = useNavigate();
 

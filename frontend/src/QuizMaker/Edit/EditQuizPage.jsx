@@ -4,7 +4,7 @@ import axios from 'axios';
 import QuestionCard from '../Create/QuestionCard';
 import QuestionTypeModal from '../Create/QuestionTypeModal';
 import QuestionsList from '../Create/QuestionsList';
-
+import { API_BASE_URL } from '../../config';
 function EditQuizPage() {
     const navigate = useNavigate();
     const { quizId } = useParams();
