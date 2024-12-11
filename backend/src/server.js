@@ -2,7 +2,7 @@ require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
-const { MongoClient } = require('mongodb');
+const { MongoClient, ServerApiVersion } = require('mongodb');
 const jwt = require('jsonwebtoken'); // JWT handling
 
 const app = express();
@@ -14,7 +14,15 @@ const username = process.env.MONGO_USERNAME;
 const password = process.env.MONGO_PASSWORD;
 
 const uri = process.env.MONGODB_URI
-const client = new MongoClient(uri);
+const client = new MongoClient(uri, {
+  serverApi: {
+      version: ServerApiVersion.v1,
+      strict: true,
+      deprecationErrors: true,
+  },
+  useNewUrlParser: true,
+  useUnifiedTopology: true
+});
 let database;
 
 // Connect to MongoDB once
@@ -23,6 +31,7 @@ async function connectToDatabase() {
     await client.connect();
     database = client.db('QuizMaster');
     console.log('Connected to MongoDB');
+    return true;
   } catch (error) {
     console.error('Error connecting to MongoDB:', error);
     process.exit(1); // Exit process on connection failure
