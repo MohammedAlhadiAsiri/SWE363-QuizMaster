@@ -21,10 +21,10 @@
     transition: background-color 0.3s ease;
     width: 100px;
     height: 50px;
-    display: block;
-    justify-content: left;
-    margin: 30px;
-}
+    position:fixed; /* Add this */
+    top: 30px;         /* Add this */
+    left: 1800px;        /* Add this */
+    }
 .statsExitButton:hover{
     background-color: #1e2f3a;
 }
@@ -32,7 +32,6 @@
     color:#2BAFFC;
     display: block;
     width: 30%;
-    margin: 0 140vw 0 30vw;
     font-family: Outfit, sans-serif;
     font-size: 32px;
 }

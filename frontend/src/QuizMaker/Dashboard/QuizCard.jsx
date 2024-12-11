@@ -6,10 +6,9 @@ import './QuizCard.css'
 
 function QuizCard({ quizzes }) {
     return (
-        // Map through quizzes and display each quiz card
-        quizzes.map((quiz, index) => (
-            <div key={index} className='quizCard'>
-                <StatsButton />
+        quizzes.map((quiz) => (
+            <div key={quiz._id} className='quizCard'>
+                <StatsButton quizId={quiz._id} />
                 <QuizName name={quiz.name}/>
                 <EditButton />
             </div>

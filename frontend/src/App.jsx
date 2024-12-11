@@ -31,7 +31,7 @@ const App = () => {
                 element={<QuizMakerDashboard />}
             />
             <Route path="/create-quiz" element={<CreateQuizPage />} />
-            <Route path="/stats" element={<StatsPage />} />
+            <Route path="/stats/:quizId" element={<StatsPage />} />
             <Route path="/edit-quiz" element={<EditQuizPage />} />
             <Route
                 path="/maker-quiz-container"

@@ -146,6 +146,44 @@ app.get('/quiz-maker-dashboard', async (req, res) => {
   }
 });
 
+app.get('/quiz-stats/:quizId', async (req, res) => {
+  try {
+      const quizId = req.params.quizId;
+      const { ObjectId } = require('mongodb');
+
+      // Verify the token
+      const token = req.headers.authorization?.split(' ')[1];
+      if (!token) {
+          return res.status(401).json({ message: 'No token provided' });
+      }
+
+      const decoded = jwt.verify(token, process.env.JWT_SECRET);
+      const userEmail = decoded.email;
+
+      const quizzesCollection = database.collection('quizzes');
+      
+      // Find the specific quiz and verify it belongs to the user
+      const quiz = await quizzesCollection.findOne({
+          _id: new ObjectId(quizId),
+          userEmail: userEmail
+      });
+
+      if (!quiz) {
+          return res.status(404).json({ message: 'Quiz not found' });
+      }
+
+      // Return quiz stats
+      res.status(200).json({
+          quizName: quiz.name,
+          totalQuestions: quiz.numberOfQuestions,
+          difficulty: quiz.difficulty,
+          // Add other stats you want to track
+      });
+  } catch (error) {
+      console.error('Error fetching quiz stats:', error);
+      res.status(500).json({ message: 'Internal server error' });
+  }
+});
 // Start the server
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
