@@ -30,7 +30,12 @@ function CreateQuizPage() {
 
     const addQuestion = (type) => {
         const initialAnswers = type === 'mcq' ? Array(4).fill('') : ['True', 'False'];
-        setQuestionCards([...questionCards, { type, questionText: '', answers: initialAnswers }]);
+        setQuestionCards([...questionCards, { 
+            type, 
+            questionText: '', 
+            answers: initialAnswers,
+            correctAnswer: null  // Add this
+        }]);
         setOpenQuestionTypeModal(false);
     };
 
@@ -41,37 +46,34 @@ function CreateQuizPage() {
 
     const updateQuestion = (index, updatedQuestion) => {
         const updatedQuestions = questionCards.map((question, i) =>
-            i === index ? updatedQuestion : question
+            i === index ? {...updatedQuestion} : question
         );
         setQuestionCards(updatedQuestions);
     };
-
     const validateQuizData = () => {
         if (!quizName) return "Quiz name is required.";
         if (questionCards.length === 0) return "At least one question is required.";
-
+    
         for (let i = 0; i < questionCards.length; i++) {
             const question = questionCards[i];
             if (!question.questionText) return `Question ${i + 1} must have text.`;
-
+    
             if (question.type === 'mcq') {
                 if (question.answers.some(answer => answer === '')) {
                     return `All answer fields for Question ${i + 1} must be filled.`;
                 }
-                const correctAnswerSelected = document.querySelector(`input[name=correctAns${i}]:checked`);
-                if (!correctAnswerSelected) {
+                if (!question.correctAnswer) {
                     return `A correct answer must be selected for Question ${i + 1}.`;
                 }
             }
-
+    
             if (question.type === 'tf') {
-                const correctAnswerSelected = document.querySelector(`input[name=correctAns${i}]:checked`);
-                if (!correctAnswerSelected) {
+                if (!question.correctAnswer) {
                     return `A correct answer must be selected for Question ${i + 1}.`;
                 }
             }
         }
-
+    
         return null;
     };
 
@@ -82,7 +84,6 @@ function CreateQuizPage() {
             return;
         }
     
-        // Get the user's email from localStorage
         const userEmail = localStorage.getItem('userEmail');
         const token = localStorage.getItem('token');
     
@@ -90,11 +91,11 @@ function CreateQuizPage() {
             name: quizName,
             difficulty,
             numberOfQuestions: questionCards.length,
-            userEmail, // Add user's email to quiz data
-            questions: questionCards.map((card, index) => ({
+            userEmail,
+            questions: questionCards.map((card) => ({
                 questionText: card.questionText,
                 answers: card.answers,
-                correctAnswer: document.querySelector(`input[name=correctAns${index}]:checked`)?.value,
+                correctAnswer: card.correctAnswer,  // Use this instead of querying DOM
                 type: card.type,
             })),
         };
@@ -163,6 +164,7 @@ function CreateQuizPage() {
                             type={question.type}
                             questionText={question.questionText}
                             answers={question.answers}
+                            correctAnswer={question.correctAnswer}  
                             onUpdate={(updatedQuestion) => updateQuestion(index, updatedQuestion)}
                         />
                     ))}
