@@ -1,14 +1,18 @@
 import React from 'react';
 import './QuestionCard.css';
 
-function QuestionCard({ type, index, questionText, answers, onUpdate }) {
+function QuestionCard({ type, index, questionText, answers, correctAnswer, onUpdate }) {
     const handleQuestionTextChange = (e) => {
-        onUpdate({ questionText: e.target.value, type, answers });
+        onUpdate({ questionText: e.target.value, type, answers, correctAnswer });
     };
 
     const handleAnswerChange = (answerIndex, value) => {
         const updatedAnswers = answers.map((answer, i) => (i === answerIndex ? value : answer));
-        onUpdate({ questionText, type, answers: updatedAnswers });
+        onUpdate({ questionText, type, answers: updatedAnswers, correctAnswer });
+    };
+
+    const handleCorrectAnswerChange = (value) => {
+        onUpdate({ questionText, type, answers, correctAnswer: value });
     };
 
     const mcq = (
@@ -26,7 +30,9 @@ function QuestionCard({ type, index, questionText, answers, onUpdate }) {
                         type='radio'
                         name={`correctAns${index}`}
                         className='radio'
-                        value={answer} // Fix: Set the value to the corresponding answer
+                        value={answer}
+                        checked={correctAnswer === answer}
+                        onChange={(e) => handleCorrectAnswerChange(e.target.value)}
                     />
                 </div>
             ))}
@@ -47,7 +53,9 @@ function QuestionCard({ type, index, questionText, answers, onUpdate }) {
                         type='radio'
                         name={`correctAns${index}`}
                         className='radio'
-                        value={option} // Fix: Set the value to "True" or "False"
+                        value={option}
+                        checked={correctAnswer === option}
+                        onChange={(e) => handleCorrectAnswerChange(e.target.value)}
                     />
                 </div>
             ))}

@@ -10,7 +10,7 @@ function QuizCard({ quizzes }) {
             <div key={quiz._id} className='quizCard'>
                 <StatsButton quizId={quiz._id} />
                 <QuizName name={quiz.name}/>
-                <EditButton />
+                <EditButton quizId={quiz._id}/>
             </div>
         ))
     );

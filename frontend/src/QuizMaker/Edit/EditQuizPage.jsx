@@ -1,59 +1,63 @@
 import React, { useState, useEffect } from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
+import axios from 'axios';
 import QuestionCard from '../Create/QuestionCard';
 import QuestionTypeModal from '../Create/QuestionTypeModal';
-import DifficultyModal from '../Create/DifficultyModal';
 import QuestionsList from '../Create/QuestionsList';
-import { useNavigate } from 'react-router-dom';
-
-// Dummy quiz data for now
-const dummyQuiz = {
-    name: "Sample Quiz",
-    questions: [
-        {
-            type: 'mcq',
-            questionText: 'What is the capital of France?',
-            answers: ['Paris', 'London', 'Berlin', 'Rome'],
-            correctAnswerIndex: 0,
-        },
-        {
-            type: 'tf',
-            questionText: 'The Earth is flat.',
-            answers: ['True', 'False'],
-            correctAnswerIndex: 1,
-        },
-    ],
-};
 
 function EditQuizPage() {
     const navigate = useNavigate();
+    const { quizId } = useParams();
     const [quizName, setQuizName] = useState('');
     const [questionCards, setQuestionCards] = useState([]);
     const [openQuestionTypeModal, setOpenQuestionTypeModal] = useState(false);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
 
     useEffect(() => {
-        setQuizName(dummyQuiz.name);
-        setQuestionCards(
-            dummyQuiz.questions.map((q) => ({
-                type: q.type,
-                questionText: q.questionText,
-                answers: q.answers,
-            }))
-        );
-    }, []);
+        const fetchQuizData = async () => {
+            try {
+                const token = localStorage.getItem('token');
+                const response = await axios.get(`http://localhost:5000/edit-quiz/${quizId}`, {
+                    headers: {
+                        'Authorization': `Bearer ${token}`
+                    }
+                });
+                
+                const quiz = response.data;
+                setQuizName(quiz.name);
+                setQuestionCards(quiz.questions.map(q => ({
+                    type: q.type,
+                    questionText: q.questionText,
+                    answers: q.answers,
+                    correctAnswer: q.correctAnswer
+                })));
+                setLoading(false);
+            } catch (error) {
+                console.error('Error fetching quiz:', error);
+                setError('Failed to fetch quiz data');
+                setLoading(false);
+            }
+        };
 
-    // Add new question to the quiz
+        fetchQuizData();
+    }, [quizId]);
+
     const addQuestion = (type) => {
-        setQuestionCards([...questionCards, { type, questionText: '', answers: Array(4).fill('') }]);
+        const initialAnswers = type === 'mcq' ? Array(4).fill('') : ['True', 'False'];
+        setQuestionCards([...questionCards, { 
+            type, 
+            questionText: '', 
+            answers: initialAnswers 
+        }]);
         setOpenQuestionTypeModal(false);
     };
 
-    // Remove question from the quiz
     const removeQuestion = (index) => {
         const updatedQuestions = questionCards.filter((_, i) => i !== index);
         setQuestionCards(updatedQuestions);
     };
 
-    // Update a question's content
     const updateQuestion = (index, updatedQuestion) => {
         const updatedQuestions = questionCards.map((question, i) =>
             i === index ? updatedQuestion : question
@@ -61,14 +65,35 @@ function EditQuizPage() {
         setQuestionCards(updatedQuestions);
     };
 
-    // Save the quiz and navigate back
-    const handleSaveClick = () => {
-        const updatedQuiz = {
-            name: quizName,
-            questions: questionCards,
-        };
-        navigate('/quiz-maker-dashboard'); // Redirect after saving
+    const handleSaveClick = async () => {
+        try {
+            const token = localStorage.getItem('token');
+            const updatedQuiz = {
+                name: quizName,
+                questions: questionCards.map(q => ({
+                    questionText: q.questionText,
+                    type: q.type,
+                    answers: q.answers,
+                    correctAnswer: q.correctAnswer
+                }))
+            };
+
+            await axios.put(`http://localhost:5000/edit-quiz/${quizId}`, updatedQuiz, {
+                headers: {
+                    'Authorization': `Bearer ${token}`,
+                    'Content-Type': 'application/json'
+                }
+            });
+
+            navigate('/quiz-maker-dashboard');
+        } catch (error) {
+            console.error('Error updating quiz:', error);
+            alert('Failed to update quiz');
+        }
     };
+
+    if (loading) return <div>Loading...</div>;
+    if (error) return <div>{error}</div>;
 
     return (
         <div className="createQuiz">
@@ -85,7 +110,7 @@ function EditQuizPage() {
             <div className="mainPage">
                 <div className='mobileTopbar'>
                     <h2 className='closeIcon' onClick={() => navigate('/quiz-maker-dashboard')}>X</h2>
-                    <h2>Create Quiz</h2>
+                    <h2>Edit Quiz</h2>
                     <p onClick={handleSaveClick} className='publishText'>Save</p>
                 </div>
                 <div className="topbar">
@@ -102,7 +127,6 @@ function EditQuizPage() {
                 </div>
 
                 <div className="questionCards">
-                    {/* Render each question card */}
                     {questionCards.map((question, index) => (
                         <QuestionCard
                             key={index}
@@ -110,13 +134,14 @@ function EditQuizPage() {
                             type={question.type}
                             questionText={question.questionText}
                             answers={question.answers}
+                            correctAnswer={question.correctAnswer}
                             onUpdate={(updatedQuestion) => updateQuestion(index, updatedQuestion)}
                         />
                     ))}
                 </div>
-                {/* Mobile button to add question */}
-                <button className='mobileAddQuestionButton' onClick={() => setOpenQuestionTypeModal(true)}>Add Question</button>        
-                {/* Modal for selecting question type */}
+                <button className='mobileAddQuestionButton' onClick={() => setOpenQuestionTypeModal(true)}>
+                    Add Question
+                </button>
                 {openQuestionTypeModal && (
                     <QuestionTypeModal addQuestionProp={addQuestion} openModal={setOpenQuestionTypeModal} />
                 )}

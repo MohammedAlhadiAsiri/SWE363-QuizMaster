@@ -145,7 +145,7 @@ app.get('/quiz-maker-dashboard', async (req, res) => {
     res.status(500).json({ message: 'Internal server error' });
   }
 });
-
+// Quiz stats route
 app.get('/quiz-stats/:quizId', async (req, res) => {
   try {
       const quizId = req.params.quizId;
@@ -184,6 +184,68 @@ app.get('/quiz-stats/:quizId', async (req, res) => {
       res.status(500).json({ message: 'Internal server error' });
   }
 });
+
+// Get specific quiz route
+app.get('/edit-quiz/:quizId', async (req, res) => {
+  try {
+      const { ObjectId } = require('mongodb');
+      const token = req.headers.authorization?.split(' ')[1];
+      if (!token) {
+          return res.status(401).json({ message: 'No token provided' });
+      }
+
+      const decoded = jwt.verify(token, process.env.JWT_SECRET);
+      const userEmail = decoded.email;
+
+      const quizzesCollection = database.collection('quizzes');
+      const quiz = await quizzesCollection.findOne({
+          _id: new ObjectId(req.params.quizId),
+          userEmail
+      });
+
+      if (!quiz) {
+          return res.status(404).json({ message: 'Quiz not found' });
+      }
+
+      res.status(200).json(quiz);
+  } catch (error) {
+      console.error('Error fetching quiz:', error);
+      res.status(500).json({ message: 'Internal server error' });
+  }
+});
+
+// Update quiz route
+app.put('/edit-quiz/:quizId', async (req, res) => {
+  try {
+      const { ObjectId } = require('mongodb');
+      const token = req.headers.authorization?.split(' ')[1];
+      if (!token) {
+          return res.status(401).json({ message: 'No token provided' });
+      }
+
+      const decoded = jwt.verify(token, process.env.JWT_SECRET);
+      const userEmail = decoded.email;
+
+      const quizzesCollection = database.collection('quizzes');
+      const result = await quizzesCollection.updateOne(
+          {
+              _id: new ObjectId(req.params.quizId),
+              userEmail
+          },
+          { $set: req.body }
+      );
+
+      if (result.matchedCount === 0) {
+          return res.status(404).json({ message: 'Quiz not found' });
+      }
+
+      res.status(200).json({ message: 'Quiz updated successfully' });
+  } catch (error) {
+      console.error('Error updating quiz:', error);
+      res.status(500).json({ message: 'Internal server error' });
+  }
+});
+
 // Start the server
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
