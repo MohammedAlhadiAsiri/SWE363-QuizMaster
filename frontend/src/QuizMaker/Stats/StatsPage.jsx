@@ -16,7 +16,7 @@ function StatsPage() {
         const fetchQuizStats = async () => {
             try {
                 const token = localStorage.getItem('token');
-                const response = await axios.get(`http://localhost:5000/quiz-stats/${quizId}`, {
+                const response = await axios.get(`${API_BASE_URL}/quiz-stats/${quizId}`, {
                     headers: {
                         'Authorization': `Bearer ${token}`
                     }

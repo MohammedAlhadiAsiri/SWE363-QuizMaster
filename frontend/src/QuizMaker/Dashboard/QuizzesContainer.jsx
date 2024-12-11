@@ -19,7 +19,7 @@ function QuizzesContainer() {
                     return;
                 }
 
-                const response = await axios.get('http://localhost:5000/quiz-maker-dashboard', {
+                const response = await axios.get(`${API_BASE_URL}/quiz-maker-dashboard`, {
                     headers: {
                         'Authorization': `Bearer ${token}`
                     }

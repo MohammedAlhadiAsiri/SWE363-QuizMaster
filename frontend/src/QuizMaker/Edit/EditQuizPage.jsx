@@ -18,7 +18,7 @@ function EditQuizPage() {
         const fetchQuizData = async () => {
             try {
                 const token = localStorage.getItem('token');
-                const response = await axios.get(`http://localhost:5000/edit-quiz/${quizId}`, {
+                const response = await axios.get(`${API_BASE_URL}/edit-quiz/${quizId}`, {
                     headers: {
                         'Authorization': `Bearer ${token}`
                     }
@@ -78,7 +78,7 @@ function EditQuizPage() {
                 }))
             };
 
-            await axios.put(`http://localhost:5000/edit-quiz/${quizId}`, updatedQuiz, {
+            await axios.put(`${API_BASE_URL}/edit-quiz/${quizId}`, updatedQuiz, {
                 headers: {
                     'Authorization': `Bearer ${token}`,
                     'Content-Type': 'application/json'

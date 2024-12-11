@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import "./SignInModal.css";
-
+import { API_BASE_URL } from "./config";
 function SignInModal({ onClose, openModal }) {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -12,7 +12,7 @@ function SignInModal({ onClose, openModal }) {
       e.preventDefault();
   
       try {
-          const response = await axios.post("http://localhost:5000/login", {
+          const response = await axios.post(`${API_BASE_URL}/login`, {
               email,
               password,
           });

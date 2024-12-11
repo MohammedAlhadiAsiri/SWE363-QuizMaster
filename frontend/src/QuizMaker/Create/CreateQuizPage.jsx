@@ -101,7 +101,7 @@ function CreateQuizPage() {
         };
     
         try {
-            const response = await fetch('http://localhost:5000/create-quiz', {
+            const response = await fetch(`${API_BASE_URL}/create-quiz`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

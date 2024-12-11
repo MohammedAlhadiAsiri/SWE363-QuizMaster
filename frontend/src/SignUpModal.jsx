@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import "./SignUpModal.css";
-
+import { API_BASE_URL } from "./config";
 function SignUpModal({ onClose, openModal }) {
     const navigate = useNavigate();
     const [role, setRole] = useState("");
@@ -31,7 +31,7 @@ function SignUpModal({ onClose, openModal }) {
 
         try {
             const response = await axios.post(
-                "http://localhost:5000/signup",
+                `${API_BASE_URL}/signup`,
                 userData
             );
 
