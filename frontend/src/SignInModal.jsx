@@ -29,7 +29,9 @@ function SignInModal({ onClose, openModal }) {
                   navigate("/quiz-maker-dashboard");
               } else if (role === "quizTaker") {
                   navigate("/quiz-taker-dashboard");
-              }
+              }else if (role === "admin") {
+                navigate("/admin");
+            }
           }
       } catch (error) {
           if (error.response && error.response.status === 401) {

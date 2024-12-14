@@ -47,6 +47,8 @@ function SignUpModal({ onClose, openModal }) {
                     navigate("/quiz-maker-dashboard");
                 } else if (role === "quizTaker") {
                     navigate("/quiz-taker-dashboard");
+                }else if (role === "admin") {
+                    navigate("/admin");
                 }
             }
         } catch (error) {
@@ -153,6 +155,15 @@ function SignUpModal({ onClose, openModal }) {
                                     onChange={handleRoleChange}
                                 />
                                 Quiz Maker
+                            </label>
+                            <label>
+                                <input
+                                    type="radio"
+                                    name="role"
+                                    value="admin"
+                                    onChange={handleRoleChange}
+                                />
+                                Admin
                             </label>
                         </div>
                     </div>
