@@ -49,7 +49,7 @@ function Navbar(){
     else 
         navigate("/")
     }
-
+    const onProfileClick = () => {navigate('/profile')};
     return(
         <header className="main-header">
             <div className="logo" onClick={handleClick}>QuizMaster</div>
@@ -59,6 +59,7 @@ function Navbar(){
                 </button>
             <a href="/AboutUs">About</a>
             <a onClick={openContactUsModal} >Contact Us</a>
+            <a onClick={onProfileClick}>Profile</a>
             </nav>
             <button className="navbar-toggle" onClick={toggleMenu}>
                 ☰
